@@ -23,7 +23,7 @@
             animation: colorChange 4s infinite;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-                .login-button {
+        .login-button {
             position: absolute;
             top: 10px;
             right: 10px;
@@ -171,6 +171,21 @@
         .divider + h2 {
             margin-top: 1em; /* Add space between divider and heading */
         }
+
+        /* Add styles for the image grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        .image-grid img {
+            width: 100%;
+            max-width: 256px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -190,9 +205,13 @@
     <section>
         <h2 style="color: #fcbd0f;">Coins</h2>
         <div class="divider"></div> <!-- Added a divider design under the "Coins" heading -->
-        <img src="https://i.kym-cdn.com/entries/icons/original/000/043/251/cover6.jpg" alt="Image 1">
-        <img src="https://i.kym-cdn.com/photos/images/newsfeed/002/598/018/771.jpg" alt="Image 2">
-        <img src="https://www.gamblingnews.com/wp-content/uploads/2020/11/alan-garner-the-hangover-meme.jpg" alt="Image 3">
+        <div class="image-grid">
+            <img src="https://i.kym-cdn.com/entries/icons/original/000/043/251/cover6.jpg" alt="Image 1">
+            <img src="https://i.kym-cdn.com/photos/images/newsfeed/002/598/018/771.jpg" alt="Image 2">
+            <img src="https://www.gamblingnews.com/wp-content/uploads/2020/11/alan-garner-the-hangover-meme.jpg" alt="Image 3">
+            <img src="https://example.com/image4.jpg" alt="Image 4">
+            <!-- Add more images here -->
+        </div>
     </section>
     <footer>
         <p>&copy; 2023 C's Auction. All rights reserved. | <a href="https://discord.gg/5zqKmmTEDg">Join our Discord</a></p>
