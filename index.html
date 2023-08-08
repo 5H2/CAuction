@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=home.html"> 
+    <title>Redirecting...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #242424;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column; /* Arrange elements vertically */
+        }
+
+        .loading-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            animation: rotate 2s linear infinite;
+        }
+
+        .loading-animation {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ebab34; /* Initial color */
+            animation: moveCircle 4s linear infinite, changeColor 4s infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes moveCircle {
+            0% { transform: translateY(40px) rotate(0deg); }
+            25% { transform: translateY(40px) rotate(90deg); }
+            50% { transform: translateY(40px) rotate(180deg); }
+            75% { transform: translateY(40px) rotate(270deg); }
+            100% { transform: translateY(40px) rotate(360deg); }
+        }
+
+        @keyframes changeColor {
+            0%, 100% { background-color: #ebab34; }
+            25% { background-color: #ebcd34; }
+            50% { background-color: #ffea80; }
+        }
+
+        .loading-text {
+            font-size: 1.5em;
+        }
+
+        .auction-text {
+            color: transparent; /* Initial color */
+            background-image: linear-gradient(#ebab34, #ebcd34, #ffea80);
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: changeColor 4s infinite;
+        }
+
+        .redirect-text {
+            font-size: 0.8em;
+            color: #55376b;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="loading-animation"></div>
+    </div>
+    <p class="loading-text">Loading <span class="auction-text">C's Auction</span>..</p>
+    <p class="redirect-text">If you are not redirected, <a href="home.html">click here</a></p>
+</body>
+</html>
