@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Message</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: white;
+  }
+
+  .heart {
+    position: relative;
+    width: 300px;
+    height: 270px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: white;
+  }
+
+  .love-text {
+    font-size: 24px;
+    color: #ff00cb;
+    text-align: center;
+    font-family: Cambria, sans-serif;
+    position: absolute;
+  
+
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 156px;
+    height: 240px;
+    border-radius: 150px 150px 0 0;
+    background-color: #ffa8ed;
+  }
+
+  .heart::before {
+    left: 150px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+
+  .heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+
+  .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: black;
+    font-family: Arial, sans-serif;
+    display: none;
+  }
+
+</style>
+</head>
+<body>
+  <div class="heart" onclick="showLoveText()">
+    <div class="text" id="loveText">I love you lori</div>
+  </div>
+
+  <script>
+    function showLoveText() {
+      var textElement = document.getElementById("loveText");
+      textElement.style.display = "block";
+    }
+  </script>
+  <div class="love-text">I love you lori</div>
+
+</body>
+</html>
+
