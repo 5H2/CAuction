@@ -53,9 +53,9 @@
         boxesClone.addEventListener(
           'transitionend',
           function () {
-            this.querySelectorAll('.box').forEach((box, index) => {
+            this.querySelectorAll('.box').forEach((box, slots) => {
               box.style.filter = 'blur(0)';
-              if (index > 0) this.removeChild(box);
+              if (slots > 0) this.removeChild(box);
             });
           },
           { once: true }
