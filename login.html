@@ -37,7 +37,7 @@
         .login-box input {
             padding: 5px;
             width: 100%;
-            max-width: 160px; /* Adjusted width for smaller input boxes */
+            max-width: 160px;
             border: 1px solid #c99c1e;
             border-radius: 5px;
             background-color: #1c1c1c;
@@ -50,10 +50,22 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px; /* Adjusted margin for spacing */
-            width: 160px; /* Set the width for the button */
+            margin-top: 10px;
+            width: 160px;
             text-align: center;
             text-decoration: none;
+        }
+        .signup-button {
+            background-color: transparent;
+            color: #ccae4e;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: fit-content;
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -61,13 +73,14 @@
     <div class="login-container">
         <div class="login-box">
             <h2>Login</h2>
-            <form>
+            <form id="loginForm">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
                 <button class="login-button" type="submit">Login</button>
             </form>
+            <a class="signup-button" href="signup.html">Sign Up</a>
         </div>
     </div>
 </body>
