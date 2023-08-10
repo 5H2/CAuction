@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emoji Slot Machine</title>
+<style>
+
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background: #0000;
+    height: 100vh;
+  }
+
+  #glowing-image {
+    display: block;
+    width: 250px;
+    height: auto;
+    margin-left: 20px;
+    box-shadow: 0 0 20px #000;
+  }
+
+  .slot-title {
+    font-size: 2rem;
+    font-family: "Impact", sans-serif;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #app {
+    background: #303030;
+    box-shadow: 0 0 20px #000000;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .doors {
+    display: flex;
+  }
+
+  .door {
+    background: #3d3d3d;
+    width: 100px;
+    height: 110px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .boxes {
+    transition: transform 1s ease-in-out;
+  }
+
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+  }
+
+  .buttons {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .balance {
+    font-size: 1.5rem;
+    font-family: "Impact", sans-serif;
+    color: #000000;
+    margin-bottom: 0.5rem;
+  }
+
+  .slider-container {
+    margin: 0.3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000000;
+  }
+
+  .slider-label {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+
+  #betAmount {
+    width: 80%;
+    margin: 0 auto;
+    appearance: none;
+    background: #1e1e1e;
+    height: 7px;
+    outline: none;
+    border-radius: 5px;
+    transition: background 0.2s;
+  }
+
+  #betAmount::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    cursor: pointer;
+  }
+
+  #betAmount::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    cursor: pointer;
+  }
+
+  button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 0.2rem;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+  }
+</style>
+</head>
+<body>
+  <div id="app">
+  <div class="slot-title">Emoji Slots</div> 
+    <div class="balance">Balance: $10 💰</div>
+    <div class="doors">
+      <div class="door">
+        <div class="boxes">
+          <!-- <div class="box">?</div> -->
+        </div>
+      </div>
+
+      <div class="door">
+        <div class="boxes">
+          <!-- <div class="box">?</div> -->
+        </div>
+      </div>
+
+      <div class="door">
+        <div class="boxes">
+          <!-- <div class="box">?</div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <div class="slider-container">
+        <label class="slider-label" for="betAmount">Bet Amount: <span id="betValue">1</span>💰</label>
+        <input type="range" id="betAmount" min="1" max="100" value="1">
+      </div>
+      <button id="spinner">Spin</button>
+      <button id="reseter" style="display: none;">Reset</button>
+    </div>
+  </div>
+
+  <img id="glowing-image" src="https://cdn.discordapp.com/attachments/1132590546859339856/1139213984344592514/65BC95D3-0073-444E-9325-E3A83ADAA91C.jpg" alt="Emoji Loot Tables">
+
+  <script>
+    (function () {
+      const items = [
+        '🍭', '⭐', '⛄️', '🦄', '🍌', '👻', '😻', '💵', '💸', '🦖', '🍎', '😂', '💰', '💲', '💎', '🍇', '🍈', '🍉', '🍊', '🍋', '🍌', '🍍', '🥭', '🍎', '🍏', '🍐', '🍑', '🍒', '🍓'
+      ];
+
+      const doors = document.querySelectorAll('.door');
+      const betAmountSlider = document.querySelector('#betAmount');
+      const betValueSpan = document.querySelector('#betValue');
+      const balanceSpan = document.querySelector('.balance');
+      const spinnerButton = document.querySelector('#spinner');
+      const resetButton = document.querySelector('#reseter');
+      let coins = 10;
+
+      spinnerButton.addEventListener('click', async function() {
+        if (coins < parseInt(betAmountSlider.value)) {
+          showNotEnoughCoins();
+          return;
+        }
+
+        coins -= parseInt(betAmountSlider.value);
+        balanceSpan.textContent = `Balance: $${coins} 💰`;
+
+        spinnerButton.style.display = 'none'; // Hide the "Play" button
+        resetButton.style.display = 'none'; // Hide the "Reset" button
+
+        init(false, 1, 2);
+
+        for (const door of doors) {
+          const boxes = door.querySelector('.boxes');
+          const duration = parseInt(window.getComputedStyle(boxes).transitionDuration) * 1000;
+          boxes.style.transform = 'translateY(0)';
+          await new Promise((resolve) => setTimeout(resolve, duration));
+        }
+
+        checkWinConditions(); // Check for win conditions
+        resetButton.style.display = 'block'; // Show the "Reset" button
+        spinnerButton.style.display = 'none';
+      });
+
+      resetButton.addEventListener('click', function() {
+        init();
+        resetButton.style.display = 'none'; // Hide the "Reset" button
+        spinnerButton.style.display = 'block'; // Show the "Play" button
+      });
+
+ function init(firstInit = true, groups = 1, duration = 1) {
+    for (const door of doors) {
+      if (firstInit) {
+        door.dataset.spinned = '0';
+      } else if (door.dataset.spinned === '1') {
+        return;
+      }
+
+      const boxes = door.querySelector('.boxes');
+      const boxesClone = boxes.cloneNode(false);
+      const pool = ['❓'];
+
+      if (!firstInit) {
+        const arr = [];
+        for (let n = 0; n < (groups > 0 ? groups : 1); n++) {
+          arr.push(...items);
+        }
+        pool.push(...shuffle(arr));
+
+        boxesClone.addEventListener(
+          'transitionstart',
+          function () {
+            door.dataset.spinned = '1';
+            this.querySelectorAll('.box').forEach((box) => {
+              box.style.filter = 'blur(1px)';
+            });
+          },
+          { once: true }
+        );
+
+        boxesClone.addEventListener(
+          'transitionend',
+          function () {
+            this.querySelectorAll('.box').forEach((box, index) => {
+              box.style.filter = 'blur(0)';
+              if (index > 0) this.removeChild(box);
+            });
+          },
+          { once: true }
+        );
+      }
+
+      for (let i = pool.length - 1; i >= 0; i--) {
+        const box = document.createElement('div');
+        box.classList.add('box');
+        box.style.width = door.clientWidth + 'px';
+        box.style.height = door.clientHeight + 'px';
+        box.textContent = pool[i];
+        boxesClone.appendChild(box);
+      }
+      boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
+      boxesClone.style.transform = `translateY(-${door.clientHeight * (pool.length - 1)}px)`;
+      door.replaceChild(boxesClone, boxes);
+    }
+  }
+
+function checkWinConditions() {
+    const winEmojis = new Set(['⭐', '💰', '💲', '💵', '💸', '💎']); // Win condition emojis
+
+    const doorEmojis = Array.from(doors, door => {
+        const box = door.querySelector('.box');
+        return box.textContent;
+    });
+
+    const winEmojiCount = doorEmojis.filter(emoji => winEmojis.has(emoji)).length;
+    const betAmount = parseInt(betAmountSlider.value);
+
+    if (winEmojiCount === 2) {
+        coins += 2 * betAmount;
+        balanceSpan.textContent = `Balance: $${coins} 💰`;
+        displayWinMessage(`+${2 * betAmount} Coins for matching emojis!`, '#0a8a21');
+    } else if (winEmojiCount === 3 && doorEmojis.includes('⭐')) {
+        displayWinMessage('💰 JACKPOT 💰', [
+            '#8a100a', '#f5a00c', '#f5ed0c', '#20f50c', '#0cf594',
+            '#0cf1f5', '#2b0cf5', '#c20cf5', '#f50c98', '#f50c3b'
+        ], 10000);
+        coins += 5000;
+        balanceSpan.textContent = `Balance: $${coins} 💰`;
+    } else if (winEmojiCount === 3) {
+        coins += 5 * betAmount;
+        balanceSpan.textContent = `Balance: $${coins} 💰`;
+        displayWinMessage(`+${5 * betAmount} Coins for matching emojis!`, '#0a8a21');
+
+    }
+
+
+    // Call the init function here
+    init();
+}
+
+
+      async function spin() {
+        if (coins < parseInt(betAmountSlider.value)) {
+          showNotEnoughCoins();
+          return;
+        }
+
+        coins -= parseInt(betAmountSlider.value);
+        balanceSpan.textContent = `Balance: $${coins} 💰`;
+
+        init(false, 1, 2);
+
+        for (const door of doors) {
+          const boxes = door.querySelector('.boxes');
+          const duration = parseInt(window.getComputedStyle(boxes).transitionDuration) * 1000;
+          boxes.style.transform = 'translateY(0)';
+          await new Promise((resolve) => setTimeout(resolve, duration));
+        }
+      }
+
+      function shuffle([...arr]) {
+    let m = arr.length;
+    while (m) {
+      const i = Math.floor(Math.random() * m--);
+      [arr[m], arr[i]] = [arr[i], arr[m]];
+    }
+    return arr;
+  }
+
+      function showNotEnoughCoins() {
+        const notEnoughCoinsElem = document.createElement('div');
+        notEnoughCoinsElem.textContent = '❌';
+        notEnoughCoinsElem.style.fontSize = '15rem';
+        notEnoughCoinsElem.style.color = '#ff0000';
+        notEnoughCoinsElem.style.position = 'absolute';
+        notEnoughCoinsElem.style.top = '50%';
+        notEnoughCoinsElem.style.left = '50%';
+        notEnoughCoinsElem.style.transform = 'translate(-50%, -50%)';
+        document.body.appendChild(notEnoughCoinsElem);
+
+        setTimeout(() => {
+          document.body.removeChild(notEnoughCoinsElem);
+        }, 2000);
+      }
+
+      betAmountSlider.addEventListener('input', function() {
+        betValueSpan.textContent = this.value;
+      });
+
+
+      init();
+    })();
+  </script>
+</body>
+</html>
