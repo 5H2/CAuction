@@ -97,11 +97,17 @@
                 <input type="text" id="newUsername" name="newUsername" required>
                 <label for="newPassword">Password:</label>
                 <input type="password" id="newPassword" name="newPassword" required>
-                <button class="signup-button" type="submit">Sign Up</button>
+                <button class="signup-button" type="submit" onclick="redirectToHome()">Sign Up</button>
             </form>
             <a class="account-button" href="login.html">Already have an account?</a>
         </div>
     </div>
     <a class="back-button" href="home.html">➜</a>
+
+    <script>
+        function redirectToHome() {
+            window.location.href = "home.html";
+        }
+    </script>
 </body>
 </html>
