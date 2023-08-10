@@ -5,7 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emoji Slot Machine</title>
 <style>
-
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #3b3b3b;
+            color: #ffffff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+            transform: rotate(180deg);
+        }
+        .back-button:hover {
+            background-color: #6b6b6b;
+        }
   body {
     margin: 0;
     padding: 0;
@@ -364,5 +382,6 @@ function checkWinConditions() {
       init();
     })();
   </script>
+    <a class="back-button" href="home.html">➜</a>
 </body>
 </html>
