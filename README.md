@@ -1,4 +1,4 @@
-# C'S AUCTION 
+
 <div align="center">
 
 </div>
@@ -45,6 +45,9 @@ CAuction is the #1 website for anything related to Hypixel Skyblock, think of it
 
 
 
+
+
+
 ## Contact
 > My discord is www .cow.com (without the space, but I dont want it to be a link)
 
@@ -70,3 +73,5 @@ Project Link: [https://github.com/5H2/CAuction](https://github.com/5H2/CAuction)
 - [x] Add Gambling
 - [X] Not work on the project
 - [ ] Actually make a functional website that looks nice and works.
+
+https://github.com/5H2/CAuction/assets/97614691/7552944e-ba7a-42d4-9f4a-8dbaa653f5b6
