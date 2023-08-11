@@ -87,6 +87,16 @@
             background-color: #6b6b6b;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginForm = document.querySelector("#loginForm");
+            loginForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent form submission
+                // You can add your authentication logic here if needed
+                window.location.href = "login-success.html"; // Redirect to login-success.html
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="login-container">
@@ -99,9 +109,39 @@
                 <input type="password" id="password" name="password" required>
                 <button class="login-button" type="submit">Login</button>
             </form>
+            <p id="errorText" style="color: red;"></p>
             <a class="signup-button" href="signup.html">Sign Up</a>
         </div>
     </div>
     <a class="back-button" href="home.html">➜</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginForm = document.querySelector("#loginForm");
+            const errorText = document.querySelector("#errorText");
+
+            const usersDatabase = [
+                { username: "user1", password: "password1" },
+                { username: "user2", password: "password2" },
+                // ... add more users here
+            ];
+
+            loginForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                const enteredUsername = document.querySelector("#username").value;
+                const enteredPassword = document.querySelector("#password").value;
+
+                const matchedUser = usersDatabase.find(user => user.username === enteredUsername && user.password === enteredPassword);
+
+                if (matchedUser) {
+                    errorText.textContent = ""; // Clear error message
+                    window.location.href = "login-success.html"; // Redirect to login-success.html
+                } else {
+                    errorText.textContent = "ERROR: Password or username incorrect";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
