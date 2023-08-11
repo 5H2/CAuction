@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success - C's Auction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1c1c1c;
+            color: #ccae4e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .checkmark-image {
+            width: 200px;
+            height: auto;
+        }
+        .success-text {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            animation: colorChange 0.5s infinite alternate;
+        }
+        @keyframes colorChange {
+            0% {
+                color: #ffb005;
+            }
+            100% {
+                color: #ffde05;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img class="checkmark-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Eo_circle_light-green_checkmark.svg/2048px-Eo_circle_light-green_checkmark.svg.png" alt="Checkmark">
+    <p class="success-text">Successfully signed up - Redirecting</p>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "home.html";
+        }, 3000); // Redirect after 3 seconds
+    </script>
+</body>
+</html>
