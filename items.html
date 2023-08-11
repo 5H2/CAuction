@@ -1,380 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C's Auction</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1c1c1c;
-            color: #ccae4e;
-        }
-        header {
-            background-color: #1c1c1c;
-            text-align: center;
-            padding: 2em 0;
-            color: #ccae4e;
-        }
-        header h1 {
-            font-size: 2.5em;
-            animation: colorChange 4s infinite;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .login-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #ccae4e;
-            color: #1c1c1c;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        @keyframes colorChange {
-            0%, 100% {
-                color: #ebab34;
-            }
-            25% {
-                color: #ebcd34;
-            }
-            50% {
-                color: #ebcd34;
-            }
-            75% {
-                color: #ffea80;
-            }
-        }
-        nav {
-            background-color: #1c1c1c;
-            text-align: center;
-            padding: 1em 0;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #ccae4e;
-            animation: colorChangeLinks 3s infinite;
-            position: relative;
-        }
-        nav ul li a[href="Items.html"] {
-            color: white;
-            animation: colorChangeLinksWhite 3s infinite;
-        }
-        nav ul li a:before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            border: 2px solid #ffde59;
-            border-radius: 3px;
-            opacity: 0;
-            animation: glowOutline 1.5s infinite;
-        }
-        @keyframes colorChangeLinks {
-            0%, 100% {
-                color: #ffc508;
-            }
-            50% {
-                color: #ffe17d;
-            }
-        }
-        @keyframes colorChangeLinksWhite {
-            0%, 100% {
-                color: white;
-            }
-            50% {
-                color: #f0f0f0;
-            }
-        }
-        @keyframes glowOutline {
-            0%, 100% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-        section {
-            padding: 3em;
-            background-color: #242424;
-            color: #c99c1e;
-            text-align: center; /* Center the section */
-        }
-        section h2 {
-            font-size: 2.3em;
-            color: #fcbd0f; /* Maintain the color */
-        }
-        .glowing-text {
-            font-size: 1.5em;
-            animation: colorChange 4s infinite;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        @keyframes colorChange {
-            0%, 100% {
-                color: #ebab34;
-            }
-            25% {
-                color: #ebcd34;
-            }
-            50% {
-                color: #ebcd34;
-            }
-            75% {
-                color: #ffea80;
-            }
-        }
-        footer {
-            background-color: #1c1c1c;
-            color: #ccae4e;
-            text-align: center;
-            padding: 1em 0;
-        }
-        footer a {
-            color: #738adb;
-            text-decoration: none;
-        }
-        /* Add a style tag for the color switching animation */
-        @keyframes colorSwitch {
-            0%, 100% {
-                color: #ffbb00;
-            }
-            50% {
-                color: #ff1900;
-            }
-        }
-
-        /* Apply the color switching animation to the "Coins" link */
-        nav ul li a[href="items.html"] {
-            animation: colorSwitch 3s infinite;
-        }
-        .divider {
-            margin: 1em auto; /* Center the divider */
-            width: 50%;
-            border: 1px solid #ccae4e; /* Divider color */
-        }
-        .divider + h2 {
-            margin-top: 1em; /* Add space between divider and heading */
-        }
-
-        /* Add styles for the image grid */
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
-            gap: 20px;
-            justify-items: center;
-            margin-top: 20px;
-        }
-
-        .image-grid img {
-            width: 100%;
-            max-width: 256px;
-            height: auto;
-        }
-
-        /* Add styles for the extended content */
-        .extended-content {
-            padding: 3em;
-            background-color: #1c1c1c;
-            color: #ccae4e;
-            text-align: center;
-        }
-
-        .extended-content h2 {
-            font-size: 2.3em;
-            color: #fcbd0f;
-            margin-bottom: 1em;
-        }
-    </style>
-</head>
-<body>
-    <a href="home.html" style="text-decoration: none; color: #ccae4e;">
-    <header>
-        <h1>C's Auction</h1>
-        <a class="login-button" href="login.html">Login</a>
-    </header>
-    </a>
-    <nav>
-        <ul>
-            <li><a href="coins.html">Coins</a></li>
-            <li><a href="items.html">Items</a></li>
-            <li><a href="collectibles.html">Collectibles</a></li>
-            <li><a href="https://discord.gg/5zqKmmTEDg">Discord</a></li>
-        </ul>
-    </nav>
-    <section>
-        <h2 style="color: #fcbd0f;">Items</h2>
-        <div class="divider"></div> <!-- Added a divider design under the "Coins" heading -->
-        <div class="image-grid">
-            <img src="https://i.kym-cdn.com/entries/icons/original/000/043/251/cover6.jpg" alt="Image 1">
-            <img src="https://i.kym-cdn.com/photos/images/newsfeed/002/598/018/771.jpg" alt="Image 2">
-            <img src="https://www.gamblingnews.com/wp-content/uploads/2020/11/alan-garner-the-hangover-meme.jpg" alt="Image 3">
-            <img src="https://www.thesportsgeek.com/app/uploads/2022/09/i-dont-go-gambling-winning-1.jpg" alt="Image 4">
-            <img src="https://dontgetserious.com/wp-content/uploads/2022/01/gambling-meme1.jpg" alt="Image 5">
-            <img src="https://i.redd.it/c5x2umgoctwz.jpg" alt="Image 6">
-            <img src="https://images3.memedroid.com/images/UPLOADED266/627252b04cb76.jpeg" alt="Image 7">
-            <img src="https://external-preview.redd.it/X_OmSfK9-ATCiM7ZS8pIm1vw5DbDyy5_f-U78JGOVkY.jpg?auto=webp&s=1ffe9d1a1589e59381800e6ffb947aab77576465" alt="Image 8">
-            <img src="https://i.kym-cdn.com/entries/icons/facebook/000/044/006/gamblecore.jpg" alt="Image 9">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwc8LpWKkN4Q4AOAMyv9aoxq8eAv9REjnkDEcJglnpfL5GGCVWysqSyiI_onohY07CYbM&usqp=CAU" alt="Image 10">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT7EcbbOMfK9S0S0fGYDDdoCiuUPci3MiKvw&usqp=CAU" alt="Image 11">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTOpzQOB4NHRHWhBDde-eYSMvNVdHfS4Ekpg&usqp=CAU" alt="Image 12">
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p><p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p><p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p><p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-<p> . <p>
-
-
-
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Arial Rounded MT Bold:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Luckiest Guy:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="cauctionxyz-by-htmltodesign">
+      <div class="frame">
+        <div class="frame1">
+          <div class="header">
+            <b class="link-heading">C's Auction</b>
+          </div>
+          <div class="frame2">
+            <div class="link">
+              <div class="login">Login</div>
+            </div>
+          </div>
         </div>
-    </section>
+        <div class="nav">
+          <div class="list">
+            <div class="item-link">
+              <div class="pseudo"></div>
+              <div class="coins">Coins</div>
+            </div>
+            <div class="item-link1">
+              <div class="pseudo1"></div>
+              <div class="coins">Items</div>
+            </div>
+            <div class="item-link2">
+              <div class="pseudo2"></div>
+              <div class="coins">Collectibles</div>
+            </div>
+            <div class="item-link3">
+              <div class="pseudo3"></div>
+              <div class="coins">Discord</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="frame3">
+        <div class="section">
+          <div class="divimage-grid">
+            <b class="heading-2">Items</b>
+            <div class="divdivider"></div>
+            <div class="frame4">
+              <img
+                class="ad15-a73b-47ce-9578-a6824e947f-icon"
+                alt=""
+                src="./public/9356ad15a73b47ce9578a6824e947fff-1@2x.png"
+              />
 
-    <footer>
-        <p>&copy; 2023 C's Auction. All rights reserved. | <a href="https://discord.gg/5zqKmmTEDg">Join our Discord</a></p>
-    </footer>
-</body>
+              <img
+                class="a19b-fd09-4eb3-af6b-8fd064c555-icon"
+                alt=""
+                src="./public/8901a19bfd094eb3af6b8fd064c555c3-1@2x.png"
+              />
+
+              <div class="rare-item-parent">
+                <b class="rare-item">RARE ITEM</b>
+                <div class="frame5">
+                  <div class="frame6">
+                    <div class="frame-child"></div>
+                    <div class="terminator">Warden Helmet</div>
+                    <div class="div">$80.00</div>
+                    <div class="deathripper">Game Breaker</div>
+                    <div class="div1">$230.00</div>
+                    <div class="terminator1">Dead Bush of Love</div>
+                    <div class="div2">$444.44</div>
+                    <img
+                      class="image-6-icon"
+                      alt=""
+                      src="./public/image-6@2x.png"
+                    />
+
+                    <div class="classic-buttontrue">
+                      <div class="button">
+                        <b class="purchase">Purchase</b>
+                      </div>
+                    </div>
+                    <div class="classic-buttontrue1">
+                      <div class="button">
+                        <b class="purchase">Purchase</b>
+                      </div>
+                    </div>
+                    <div class="classic-buttontrue2">
+                      <div class="button">
+                        <b class="purchase">Purchase</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="frame7">
+                    <img
+                      class="image-3-icon"
+                      alt=""
+                      src="./public/image-3@2x.png"
+                    />
+
+                    <div class="frame8">
+                      <div class="div3">???</div>
+                      <div class="div4">???</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="frame9">
+              <img
+                class="a499b548-7532-45a4-944d-d7965e-icon"
+                alt=""
+                src="./public/a499b548753245a4944dd7965e6edffa-1@2x.png"
+              />
+
+              <div class="frame10">
+                <img
+                  class="a499b548-7532-45a4-944d-d7965e-icon"
+                  alt=""
+                  src="./public/873c5d901db64609a1b387e68dc8189f-1@2x.png"
+                />
+
+                <img
+                  class="a499b548-7532-45a4-944d-d7965e-icon"
+                  alt=""
+                  src="./public/9961d302e8524ffca107d1c8541eeb9f-1@2x.png"
+                />
+              </div>
+            </div>
+            <div class="frame-parent">
+              <div class="frame11">
+                <div class="frame12">
+                  <img
+                    class="a499b548-7532-45a4-944d-d7965e-icon"
+                    alt=""
+                    src="./public/hyperion@2x.png"
+                  />
+
+                  <img
+                    class="a499b548-7532-45a4-944d-d7965e-icon"
+                    alt=""
+                    src="./public/terminator@2x.png"
+                  />
+                </div>
+                <div class="frame13">
+                  <img
+                    class="a499b548-7532-45a4-944d-d7965e-icon"
+                    alt=""
+                    src="./public/deathripper@2x.png"
+                  />
+
+                  <img
+                    class="a499b548-7532-45a4-944d-d7965e-icon"
+                    alt=""
+                    src="./public/judgement-core@2x.png"
+                  />
+                </div>
+              </div>
+              <div class="frame14">
+                <div class="hyperion">Hyperion</div>
+                <div class="judgement">Terminator</div>
+                <div class="deathripper1">Deathripper Dagger</div>
+                <div class="judgement">Judgement Core</div>
+              </div>
+              <div class="frame15">
+                <div class="frame16">
+                  <div class="div5">$460.78</div>
+                  <div class="div5">$213.26</div>
+                </div>
+                <div class="frame16">
+                  <div class="div5">$333.33</div>
+                  <div class="div5">$30.89</div>
+                </div>
+              </div>
+              <div class="frame18">
+                <div class="frame19">
+                  <div class="classic-buttontrue3">
+                    <div class="button">
+                      <b class="purchase">Purchase</b>
+                    </div>
+                  </div>
+                  <div class="classic-buttontrue3">
+                    <div class="button">
+                      <b class="purchase">Purchase</b>
+                    </div>
+                  </div>
+                </div>
+                <div class="frame20">
+                  <div class="classic-buttontrue3">
+                    <div class="button">
+                      <b class="purchase">Purchase</b>
+                    </div>
+                  </div>
+                  <div class="classic-buttontrue3">
+                    <div class="button">
+                      <b class="purchase">Purchase</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="crimson-deal-full-set-1x-cri-parent">
+              <div class="crimson-deal-full-container">
+                <span class="txt">
+                  <p class="crimson-deal-full">Crimson Deal (FULL SET)</p>
+                  <p class="x-crimson-helmet">
+                    1x Crimson Helmet, 1x Crimson Chestplate, 1x Crimson
+                    Leggings 1x Crimson Boots
+                  </p>
+                </span>
+              </div>
+              <div class="frame21">
+                <div class="divans-drill">Divan’s Drill</div>
+                <div class="judgement">Clover Helmet</div>
+                <div class="hyperion">Space Helmet</div>
+              </div>
+              <div class="frame22">
+                <div class="div5">$300.00</div>
+                <div class="div5">$336.00</div>
+                <div class="div5">$180.00</div>
+              </div>
+              <div class="frame23">
+                <div class="classic-buttontrue3">
+                  <div class="button">
+                    <b class="purchase">Purchase</b>
+                  </div>
+                </div>
+                <div class="classic-buttontrue3">
+                  <div class="button">
+                    <b class="purchase">Purchase</b>
+                  </div>
+                </div>
+                <div class="classic-buttontrue3">
+                  <div class="button">
+                    <b class="purchase">Purchase</b>
+                  </div>
+                </div>
+              </div>
+              <div class="frame24">
+                <img
+                  class="image-11-icon"
+                  alt=""
+                  src="./public/image-11@2x.png"
+                />
+
+                <b class="b">
+                  <span class="txt">
+                    <span>
+                      <span class="span">$300.00</span>
+                    </span>
+                    <span> </span>
+                    <span class="span1">$275.00</span>
+                  </span>
+                </b>
+                <div class="classic-buttontrue10">
+                  <div class="button10">
+                    <b class="purchase">Purchase</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="p">
+            <div class="login">
+              <span>© 2023 C's Auction. All rights reserved. | </span>
+              <span class="join-our-discord">Join our Discord</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
