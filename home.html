@@ -133,6 +133,15 @@
             background-color: #ccae4e;
             color: #1c1c1c;
         }
+        .click-trigger {
+            position: absolute;
+            top: 69px;
+            left: 69px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -155,6 +164,15 @@
     <footer>
         <p>&copy; 2023 C's Auction. All rights reserved. | <a href="https://discord.gg/5zqKmmTEDg">Join our Discord</a></p>
     </footer>
-   <a class="slot-machine-button" href="slots.html">🎰</a>
+    <a class="slot-machine-button" href="slots.html">🎰</a>
+    <div class="click-trigger" id="redirectTrigger"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const redirectTrigger = document.getElementById("redirectTrigger");
+            redirectTrigger.addEventListener("click", function() {
+                window.location.href = "gilbert.html";
+            });
+        });
+    </script>
 </body>
 </html>
