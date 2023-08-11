@@ -52,9 +52,15 @@ Project Link: [https://github.com/5H2/CAuction](https://github.com/5H2/CAuction)
 ## Acknowledgments
 
 * [htmledit.squarefree.com](https://htmledit.squarefree.com/) Greatest website OAT no debate shoutout fr day 1
-* Anybody in the discord for feature ideas, and more.
+* [ChatGPT](https://openai.com/chatgpt) Carried with bugfixing, and helping implement features and more. 
 * Anybody that actually uses this website, and especially buyers.
 <br />
 
 ## EXTRA
-The main project colours are `#CCAE4E` for text, buttons and everything else and the classic `#1C1C1C` for the background.
++ The main project colours are `#CCAE4E` for text, buttons and everything else and the classic `#1C1C1C` for the background.
++ ChatGPT carried with bugfixing
+
+
+- [x] Add Gambling
+- [X] Not work on the project
+- [ ] Actually make a functional website that looks nice and works.
