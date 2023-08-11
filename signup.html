@@ -86,27 +86,42 @@
         .back-button:hover {
             background-color: #6b6b6b;
         }
+        .error-text {
+            color: red;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="signup-container">
         <div class="signup-box">
             <h2 style="margin-bottom: 10px;">Sign Up</h2>
-            <form id="signupForm" action="/home.html" method="post">
+            <form id="signupForm" action="signup-success.html" method="post">
                 <label for="newUsername">Username:</label>
                 <input type="text" id="newUsername" name="newUsername" required>
                 <label for="newPassword">Password:</label>
                 <input type="password" id="newPassword" name="newPassword" required>
-                <button class="signup-button" type="submit" onclick="redirectToHome()">Sign Up</button>
+                <button class="signup-button" type="button" onclick="validateAndRedirect()">Sign Up</button>
             </form>
             <a class="account-button" href="login.html">Already have an account?</a>
+            <p class="error-text" id="errorText"></p>
         </div>
     </div>
     <a class="back-button" href="home.html">➜</a>
 
     <script>
-        function redirectToHome() {
-            window.location.href = "signup-success.html";
+        function validateAndRedirect() {
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const errorText = document.getElementById('errorText');
+            const signupForm = document.getElementById('signupForm');
+
+            if (newUsername.trim() === '' || newPassword.trim() === '') {
+                errorText.textContent = 'Please fill out both fields.';
+            } else {
+                errorText.textContent = '';
+                signupForm.submit();
+            }
         }
     </script>
 </body>
