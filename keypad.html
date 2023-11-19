@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>123789</title>
+    <style>
+        body {
+            background-color: #363636;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #FFFFFF;
+        }
+
+        .keypad-container {
+            text-align: center;
+            position: relative;
+        }
+
+        .keypad-button {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #ffbb00;
+            color: #363636;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #display {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #feedback {
+            font-size: 256px;
+            margin-top: -15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+<div class="keypad-container">
+    <div id="display">Enter Code:</div>
+    <div>
+        <button class="keypad-button" onclick="appendDigit(1)">1</button>
+        <button class="keypad-button" onclick="appendDigit(2)">2</button>
+        <button class="keypad-button" onclick="appendDigit(3)">3</button>
+    </div>
+    <div>
+        <button class="keypad-button" onclick="appendDigit(4)">4</button>
+        <button class="keypad-button" onclick="appendDigit(5)">5</button>
+        <button class="keypad-button" onclick="appendDigit(6)">6</button>
+    </div>
+    <div>
+        <button class="keypad-button" onclick="appendDigit(7)">7</button>
+        <button class="keypad-button" onclick="appendDigit(8)">8</button>
+        <button class="keypad-button" onclick="appendDigit(9)">9</button>
+    </div>
+    <button class="keypad-button" onclick="clearCode()">C</button>
+    <div id="feedback"></div>
+</div>
+
+<script>
+    let enteredCode = '';
+
+    function appendDigit(digit) {
+        enteredCode += digit;
+        updateDisplay();
+
+        if (enteredCode.length === 6) {
+            checkCode();
+        }
+    }
+
+    function clearCode() {
+        enteredCode = '';
+        updateDisplay();
+        clearFeedback();
+    }
+
+    function updateDisplay() {
+        document.getElementById('display').innerText = `Enter Code: ${enteredCode}`;
+    }
+
+    function checkCode() {
+        const feedbackElement = document.getElementById('feedback');
+        
+        if (enteredCode === '123789') {
+            feedbackElement.innerText = '✅';
+            setTimeout(() => {
+                window.location.href = 'manga.html';
+            }, 2000);
+        } else {
+            feedbackElement.innerText = '❌';
+            setTimeout(() => {
+                clearFeedback();
+                clearCode();
+            }, 2000);
+        }
+    }
+
+    function clearFeedback() {
+        document.getElementById('feedback').innerText = '';
+    }
+</script>
+
+</body>
+</html>
