@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Display</title>
+    <title>Chapter 74</title>
     <style>
         body {
             background-color: #363636;
@@ -12,20 +12,69 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            color: white; /* Set text color to white */
+        }
+
+        h1 {
+            font-size: 2em; /* Set font size for the heading */
+            margin-bottom: 0px; /* Add some space between the heading and images */
+        }
+
+        h2 {
+            margin-top: 5px;
         }
 
         img {
-            width: 30%; /* Set a fixed width for the images, adjust as needed */
+            width: 75%; /* Set a fixed width for the images, adjust as needed */
             height: auto;
             margin-bottom: 50px; /* Add some space between the images */
+        }
+
+        #nextBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff87c7;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #previousBtn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #ff87c7;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjqMx9OwaIOwntAZYxdR8yg48vcMaAY4JxtClhjAS6WRyeG1YVZhPuQflR3CUUZKXS43dDvx_E9sWmT3oszRI58hIJQuExDcwtpl60z9-O4S6aw0yZXHpBfZKiajSJd4EA6av73gsCE_fOJ6RLdioTGr1C7N-jsHXXn10wi0z9lnnyYzvVX5-5I3qDwwg=s1076" alt="Displayed Image 1">
-    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgPnESChdi_vHkfTFVuQjnHgK0gEwKkLJ2iSVabZK8glSxRBlqn6GykK_dUsVR0ppyZ8nhmOYfpTVGd8S5pTcHnuqq5jZY8HiQWJPaWG9CcOcsmpjHSKYSd7C4BEAsjwA2p3uDHl0nt6FWnrrEN95WbeM95jUdulUZyPwMoQOdtJprpsd2yrQqHdeql8w=s1440" alt="Displayed Image 2">
-    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjlinz9uraWLxoeewbFkPuXyGPsdx4PVjXV-IQyKU4JnGmqmUAwmcZOof2RPopX5VAUXTpJSeLpFEoBxChNxLcWY2mKRudL2bUAHy01KKICo7nrHqKZVJfyjh_rsS1w6zjUxIGfJqM1tzbCcCA3uRG7XNRkdFfU6UoGGpeaYR7hO-8xPQ_6AVPH8mdqRg=s1076" alt="Displayed Image 3">
+    <h1>Chapter 74</h1>
+    <h2>Dedicated to Lori</h2>
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjqMx9OwaIOwntAZYxdR8yg48vcMaAY4JxtClhjAS6WRyeG1YVZhPuQflR3CUUZKXS43dDvx_E9sWmT3oszRI58hIJQuExDcwtpl60z9-O4S6aw0yZXHpBfZKiajSJd4EA6av73gsCE_fOJ6RLdioTGr1C7N-jsHXXn10wi0z9lnnyYzvVX5-5I3qDwwg=s1076" alt="Square 1">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgPnESChdi_vHkfTFVuQjnHgK0gEwKkLJ2iSVabZK8glSxRBlqn6GykK_dUsVR0ppyZ8nhmOYfpTVGd8S5pTcHnuqq5jZY8HiQWJPaWG9CcOcsmpjHSKYSd7C4BEAsjwA2p3uDHl0nt6FWnrrEN95WbeM95jUdulUZyPwMoQOdtJprpsd2yrQqHdeql8w=s1440" alt="Square 2">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjlinz9uraWLxoeewbFkPuXyGPsdx4PVjXV-IQyKU4JnGmqmUAwmcZOof2RPopX5VAUXTpJSeLpFEoBxChNxLcWY2mKRudL2bUAHy01KKICo7nrHqKZVJfyjh_rsS1w6zjUxIGfJqM1tzbCcCA3uRG7XNRkdFfU6UoGGpeaYR7hO-8xPQ_6AVPH8mdqRg=s1076" alt="Square 3">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiI2iJIjKoAwhMTo0PfHygVTtud7TK5kJgqdNsGH0IvmRnwoVuF9sxR8T-fLqAO1_POeNBClcfQGm0ew-JjRVOVO9L5x0rQQqUWAizLWUR8VQSNF7psGWTrZK2s1I9t3-QYqzqVpfvxc0gaEplz1_9kG-TYnlF6CECSEtowFYLHe79XSFsVA2bLs0xgjA=s1046" alt="Image 1">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEj2f1dGE02bT24fi3X3qLzkhdYsARzi7QYLffYhd_jU7I2cwjWBrxT-3XLUSp9M78x2I1EgjjpG7Ql5_EqEbRlIxPTWypTfYgY016wGr3QKLgDBpUsHw2OrxNIQ84EsWFEx0pMmww3U8Eqg4Kpgjsk2inurvENUwHZ-ds65nmL7y0qxfo571SYf_86jVQ=s1046" alt="Image 2">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg3WlTPYhxqlWq4Od6DLNe-jLVFSEICQ75LVgkNEUOrl6CX-QofGigTgyQ1cmvW0Vnia1ZlDk1635bfqhVHxeWuNhpY3TDJ0_Z1PvVtEoCz5l7Hje2GeFWW52R1ocAimk3grDB-jybSNduYNGrrslS54_RYBKcJSNb7D6DYM1h51fFjLW9QmyncVBplKg=s1064" alt="Image 3">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEie-2sCqRPJaP7LJZx5niPvHRTheRexawGvlp2OsUm_5ksLTsBR8GFeue3TWGjxH90lGA3Wm3ubLlhNJxeUVXqKHysIV6TuDMqyC3wDmQWVsJoaTIDleQQNtZXh73R5WUmWNTQ-7YvXhrAeQZmAqIJeDA7gNluq2gOvkiNqlBT6QH-1Qmtup9ZM0r6uOg=s1047" alt="Image 4">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh96wy1_ebyvxW5LFQccfEWAi2Pg-UFywXFh3cbWDFYxTPkcLP7686aOst_9KoGwMyLKtEh4UYdHTyUnkQ4N9OgJlwWRZN2hCNzEDXEOVmu4Uos3dTSkIUt_JnkXOdqmJWUaWWqg5F4DbE2J2Kb-ObM0aQ1Bay58rP_5EVrcw3tExGFf7GSVciheVvuWg=s1046" alt="Image 5">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjRNGp9BiWyZEgMZScYKUAaFIN4Cf-bi9b6hHfaCdeEY-3tT2VCQQmRXMPCUpKaArJjYD-IuLFn6ZXJIHIAk91x8bca0aaom-7_yzIF_LUHl2l_GzILTBIwHp1W4X4fejWI3D3HgV7fn6vB-yyjlvw3JlvCQ8vfntgmtG7_66lbP6KSy5hWX04DXIOw7A=s1058" alt="Image 6">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh0f4LSqfKhaUgmL76YSS_VEc6308D1IbXinAHerNWeaz221PB3rT-RaeyOG6N7AjslnpEV4LudghHIrTN7nhvkT1BFltIOkMoRBZwe5rdZZnQdZ3nBDKKu6O0xWIXDC-_6XtqwVBBOhUxolApHLRjXvdXYd33Hy_2bbLUWdoiArqwPRy_Gvzmx57kDyg=s1046" alt="Image 7">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhnwBHNHJTUi2XbTs1CoO5wgXVll_iND-pzFGWurLBkBPk_i-JqSRtU_X0B3MHGR9si73xrtj19lilTim-Wdo3F2MR6U3bHydCooBUg2vWinf-a6GYW2mG-rK9OmwEO0ZjytC0udEdcBSiA2xZcv8uOHVFcLvvQ0q2gOCoS4oUwjfbPCC8JssE6TO9s_w=s1062" alt="Image 8">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiz6ImHPlt85VvxAg1mPq-Z0OFnQDCGgdBYd8pNmXoj1GKWcbUIl1s0KgvVzZoOXGVzHhdhntcYiIEpyQAXaOUREq5ZxMMgmtg0fXyPIyMrZyyKS5ewWLZS59Btn9HLIdlAOFINZa8chBU6Ace7NncJCaggD4u12HhHufM_OoORYT_xeQRa5ZjXBqPYuuA=s1059" alt="Image 9">
+    
+    
+
+
+    <button id="nextBtn" onclick="redirectToChapter('chapter-75.html')">»</button>
+    <button id="previousBtn" onclick="redirectToChapter('chapter-73.html')">«</button>
 </body>
 </html>
-https://blogger.googleusercontent.com/img/a/AVvXsEgPnESChdi_vHkfTFVuQjnHgK0gEwKkLJ2iSVabZK8glSxRBlqn6GykK_dUsVR0ppyZ8nhmOYfpTVGd8S5pTcHnuqq5jZY8HiQWJPaWG9CcOcsmpjHSKYSd7C4BEAsjwA2p3uDHl0nt6FWnrrEN95WbeM95jUdulUZyPwMoQOdtJprpsd2yrQqHdeql8w=s1440
