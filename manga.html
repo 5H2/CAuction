@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manga Selection</title>
+  <style>
+    body {
+      background-color: #363636;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: white;
+    }
+
+    .layer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #2e2e2e;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 250px; /* Set the width to 100% to match the image width */
+      border-radius: 8px;
+    }
+
+    img {
+      width: 100%;
+      max-width: 200px;
+      margin-top: 20px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title">Manga Index</div>
+
+  <div class="layer">
+    <img src="https://m.media-amazon.com/images/I/61kWJEQqr7L._AC_UF1000,1000_QL80_.jpg" alt="Nana Cover Image">
+    <button onclick="redirectToChapter('nana.html')">Read Nana</button>
+  </div>
+
+  <div class="layer">
+    <img src="https://m.media-amazon.com/images/I/71y+XnBXm4L._AC_UF1000,1000_QL80_.jpg" alt="One Piece Cover Image">
+    <button onclick="redirectToChapter('one-piece.html')">Read One Piece</button>
+  </div>
+
+  <div class="layer">
+    <!-- Add more layers as needed -->
+  </div>
+
+  <script>
+    function redirectToChapter(chapter) {
+      window.location.href = chapter;
+    }
+  </script>
+
+</body>
+</html>
