@@ -13,6 +13,8 @@
             align-items: center;
             justify-content: center;
             color: white; /* Set text color to white */
+            font-family: Arial, sans-serif; /* Set a default font */
+            margin-bottom: 200px; /* Add 200px of empty space at the bottom */
         }
 
         h1 {
@@ -21,7 +23,11 @@
         }
 
         h2 {
-            margin-top: 5px;
+            margin-top: 10px;
+            font-size: 0.9em; /* Set font size for the content */
+            text-align: center; /* Center-align the text */
+            quotes: "“" "”"; /* Set custom quotes */
+            white-space: pre-wrap; /* Preserve whitespace and wrap lines */
         }
 
         img {
@@ -53,16 +59,42 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        #mainPageBtn {
+            background-color: #525252;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+        
+        #instructions {
+            color: #6e6e6e;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+            max-width: 300px; /* Set a maximum width for better readability */
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
     <script>
-    function redirectToChapter(chapterUrl) {
-        window.location.href = chapterUrl;
-    }
-</script>
+        function redirectToChapter(chapterUrl) {
+            window.location.href = chapterUrl;
+        }
+
+        function redirectToMainPage() {
+            window.location.href = 'https://cauction.xyz/manga.html';
+        }
+    </script>
 </head>
 <body>
     <h1>Chapter 82</h1>
     <h2>Dedicated to Lori</h2>
+    
 <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgZZVn3EzqBxXx0Gl3LbQqcbyGG5Nwz-iuJEXdVNGr0ZJTEdOTkjA9-1pY_qNzRRnjkYTOnM9cOu7M3ur41xnjYkW79ezkeS9aeNC2BjTQRfGT3nvAqgQLNkj4eISmLyZeM0CrPdvbRWGldWqal3Tvxm2OQRpLhy0NdXnBhfSMV0aLyk3wULck083X_YQ=s1093">
 <img src="https://blogger.googleusercontent.com/img/a/AVvXsEipkBggp_mPN8lNbTYWCTktG5MVIv1FNSyTyb5s6Yn5a1MPz2pq0BH8xnWGArGT3kjM8IMAIA5mt4WSujObYzlqkTpSp3ACHPEzskfSpCKiseDrqZ0J5mitYi7-4dUhikhRvmRRPsP7geMs7SNbcB9Tugv8CCSeU5fHnAiJJDE4dw871rJ1FYPeijbpvg=s1102">
 <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhmagvhTgk8LOu2B3dTwsdK7z5lZDauezBPT8Ib1RGbfORCSrlWsucvAgOmXydmQG4nunryHqv0jj1exZgloTUTEA1-RN-HuXAJn4YRw3zZGOIqjAoj8iFMX9q_BoX29bkOnjj_Km1Tcz1YY9A3XiKSTSHxjUWIDHn7fT9YznOOCV1gVqufku3GzX2Ihw=s1093">
@@ -105,6 +137,8 @@
 <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjEi7vxeQsnQTt_CYQquiyCZpTsZkV6ABUGscQqOqdfs9ge9iCbbqacCjEXS55uzbh8gMBVpF0YLD8eNdhnl9NJK_mR6K92cMba6hak5GCHZiWHgjvKmvtGic2U6pCRdT4i4-YTdu30k-scV5DGfN2hj0Aq4-n5KW8z4JLMCP78asU_i3HMjH2_x2iRjQ=s1093">
 
     <button id="nextBtn" onclick="redirectToChapter('chapter-83.html')">»</button>
+    <button id="mainPageBtn" onclick="redirectToMainPage()">Read more manga</button>
     <button id="previousBtn" onclick="redirectToChapter('chapter-81.html')">«</button>
+    <p id="instructions">To go back and forth between chapters, click one of the pink arrows on the sides of the screen.</p>
 </body>
 </html>
