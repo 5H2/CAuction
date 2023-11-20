@@ -25,6 +25,14 @@
       margin: 20px 0;
       color: white;
     }
+    
+        .info-text {
+      text-align: center;
+      font-size: 12px;
+      margin-bottom: 10px;
+      margin-top: -20px;
+      color: #878787;
+    }
 
     .layer {
       display: flex;
@@ -61,6 +69,20 @@
       font-size: 30px;
       text-decoration: none;
     }
+    
+.small-button {
+  background-color: #2e2e2e;
+  padding: 10px; /* Increased padding for a wider button */
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px; /* Adjusted margin for better spacing */
+  border-radius: 5px;
+  width: 100%; /* Set a specific width for the button */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
   </style>
 </head>
 <body>
@@ -70,6 +92,7 @@
   <div class="container">
 
     <div class="title">Manga Index</div>
+        <div class="info-text">To request a manga, email miwmowmanga@gmail.com</div>
 
     <div class="layer">
       <a href="nana/nana.html">
@@ -93,7 +116,7 @@
     </div>
 
     <!-- Add more layers as needed -->
-
+  <button class="small-button" onclick="redirectToChapter('bloons4.html')"></button>
   </div>
 
   <script>
