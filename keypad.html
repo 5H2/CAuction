@@ -7,7 +7,6 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         body {
-            background-color: #363636;
             font-family: Arial, sans-serif;
             display: flex;
             align-items: center;
@@ -15,6 +14,7 @@
             height: 100vh;
             margin: 0;
             color: #FFFFFF;
+            background-color: #363636;
         }
 
         .keypad-container {
@@ -98,15 +98,18 @@
         const feedbackElement = document.getElementById('feedback');
         
         if (enteredCode === '123789') {
-            feedbackElement.innerText = '✅';
+            feedbackElement.innerText = '✔';
+            document.body.style.backgroundColor = '#83DBA4'; // Change background color on success
             setTimeout(() => {
                 window.location.href = 'manga.html';
             }, 2000);
         } else {
             feedbackElement.innerText = '❌';
+            document.body.style.backgroundColor = '#f44646'; // Change background color on failure
             setTimeout(() => {
                 clearFeedback();
                 clearCode();
+                document.body.style.backgroundColor = '#363636'; // Reset background color
             }, 2000);
         }
     }
