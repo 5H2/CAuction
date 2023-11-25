@@ -10,7 +10,7 @@
     	<img src="https://cdn.discordapp.com/attachments/1132590546859339856/1139379354607030292/favicon.png" alt="CAuction" height="260" width="300">
   </a>
 
-<h3 align="center">C's Auction</h3>
+<h3 align="center">MIWMOW</h3>
 <h3 align="center">By 5H2</h3>
 
   <p align="center">
