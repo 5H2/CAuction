@@ -58,8 +58,9 @@ Project Link: [https://github.com/5H2/miwmow](https://github.com/5H2/miwmow) <im
 + ChatGPT !
 
 
-- [x] Add
+- [x] Add useless features
 - [X] Not work on the project
+- [ ] Add more manga
 - [ ] Functional website
 
 https://github.com/5H2/CAuction/assets/97614691/7552944e-ba7a-42d4-9f4a-8dbaa653f5b6
