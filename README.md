@@ -7,7 +7,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/5H2/CAuction">
-    	<img src="https://i.ibb.co/KFtmQdP/37-BE76-BB-353-F-4709-A3-BE-4-BE210-CEA2-A3.png" alt="MIWMOW" height="260" width="600">
+    	<img src="https://i.ibb.co/KFtmQdP/37-BE76-BB-353-F-4709-A3-BE-4-BE210-CEA2-A3.png" alt="MIWMOW" height="300" width="600">
   </a>
 
 <h3 align="center">MIWMOW</h3>
