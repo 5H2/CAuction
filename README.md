@@ -28,17 +28,10 @@ MIWMOW is the #1 place for all your manga needs, read any manga, in order. New c
   </p>
 </div>
 
-# CAuction
-CAuction is the #1 website for anything related to Hypixel Skyblock, think of it as the black market of skyblock, except easily accessible and safe! It is the best place for purchasing coins, items, armour, pets, talismans, collectibles and anything you can possibly think about!
+# MIWMOW
+MIWMOW is the best manga reading website, all your manga needs are sorted, read anything you can think of. If you don't see a manga, simply request it, and we will add it. Our manga collection is always growing and updating.
 
 <br />
-<br />
-
-## How to Use CAuction 
->  https://cauction.xyz
-
-### First things first, [Head to the website](https://cauction.xyz). Here you will simply need to click on the tabs to sort items, and if you see something you like you can purchase it. Just checkout and your seller will contact you for item pickup. Simple as that!
-
 <br />
 
 
@@ -47,29 +40,26 @@ CAuction is the #1 website for anything related to Hypixel Skyblock, think of it
 
 
 ## Contact
-> My discord is www .cow.com (without the space, but I dont want it to be a link)
+> My discord is @cowowowow
 
 
 Created by: 5H2  
-Contact me: ✦ https://discord.com/invite/5zqKmmTEDg ✦ <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Discord" height="15" width="17.5">
-<br />
 
-Project Link: [https://github.com/5H2/CAuction](https://github.com/5H2/CAuction) <img src="https://icones.pro/wp-content/uploads/2021/06/symbole-github-violet.png" alt="Github" height="20" width="17.5">
+Project Link: [https://github.com/5H2/miwmow](https://github.com/5H2/miwmow) <img src="https://icones.pro/wp-content/uploads/2021/06/symbole-github-violet.png" alt="Github" height="20" width="17.5">
 
 ## Acknowledgments
 
 * [htmledit.squarefree.com](https://htmledit.squarefree.com/) Greatest website OAT no debate shoutout fr day 1 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/800px-HTML5_Badge.svg.png" alt="HTML5" height="20" width="17.5">
 * [ChatGPT](https://openai.com/chatgpt) Carried with bugfixing, and helping implement features and more. <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1024px-ChatGPT_logo.svg.png" alt="ChatGPT" height="20" width="17.5">
-* Anybody that actually uses this website, and especially buyers.<img src="https://cdn.discordapp.com/attachments/1132590546859339856/1139379354607030292/favicon.png" alt="CAuction" height="20" width="20">
 <br />
 
 ## EXTRA
-+ The main project colours are `#CCAE4E` for text, buttons and everything else and the classic `#1C1C1C` for the background.
-+ ChatGPT carried with bugfixing
++ The main project background colour is `#363636`.
++ ChatGPT !
 
 
-- [x] Add Gambling
+- [x] Add
 - [X] Not work on the project
-- [ ] Actually make a functional website that looks nice and works.
+- [ ] Functional website
 
 https://github.com/5H2/CAuction/assets/97614691/7552944e-ba7a-42d4-9f4a-8dbaa653f5b6
