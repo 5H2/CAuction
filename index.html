@@ -2,85 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=home.html"> 
-    <!-- url=home.html, url=keypad.html-->
-    <link rel="shortcut icon" type="image/png" href="favicon.png?">
-    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="1;url=home.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #242424;
-            color: #ccc;
+            background-color: #363636;
+            color: #ffffff;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            flex-direction: column; /* Arrange elements vertically */
+            height: 100vh;
+            margin: 0;
         }
 
-        .loading-container {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            animation: rotate 2s linear infinite;
-        }
-
-        .loading-animation {
-            position: absolute;
-            width: 20px;
-            height: 20px;
+        .loading-spinner {
+            border: 8px solid #bdf9fc;
+            border-top: 8px solid #ffffff;
             border-radius: 50%;
-            background-color: #ebab34; /* Initial color */
-            animation: moveCircle 4s linear infinite, changeColor 4s infinite;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
         }
 
-        @keyframes rotate {
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        @keyframes moveCircle {
-            0% { transform: translateY(40px) rotate(0deg); }
-            25% { transform: translateY(40px) rotate(90deg); }
-            50% { transform: translateY(40px) rotate(180deg); }
-            75% { transform: translateY(40px) rotate(270deg); }
-            100% { transform: translateY(40px) rotate(360deg); }
-        }
-
-        @keyframes changeColor {
-            0%, 100% { background-color: #ebab34; }
-            25% { background-color: #ebcd34; }
-            50% { background-color: #ffea80; }
-        }
-
-        .loading-text {
-            font-size: 1.5em;
-        }
-
-        .auction-text {
-            color: transparent; /* Initial color */
-            background-image: linear-gradient(#ebab34, #ebcd34, #ffea80);
-            background-clip: text;
-            -webkit-background-clip: text;
-            animation: changeColor 4s infinite;
-        }
-
-        .redirect-text {
-            font-size: 0.8em;
-            color: #55376b;
-            margin-top: 20px;
-        }
     </style>
+    <script>
+        setTimeout(function() {
+            document.getElementById("loading-text").innerText = "Authenticating Connection...";
+            setTimeout(function() {
+                document.getElementById("loading-text").innerText = "Verifying Connection...";
+                setTimeout(function() {
+                    document.getElementById("loading-text").innerText = "Checking artifacts...";
+                    setTimeout(function() {
+                        document.getElementById("loading-text").innerText = "Establishing Connection...";
+                        setTimeout(function() {
+                            document.getElementById("loading-text").innerText = "Redirecting...";
+                        }, 1000); // 1 second delay
+                    }, 100); // 1 second delay
+                }, 100); // 1 second delay
+            }, 200); // 1 second delay
+        }, 200); // 0.2 second delay
+    </script>
 </head>
 <body>
-    <div class="loading-container">
-        <div class="loading-animation"></div>
-    </div>
-    <p class="loading-text">Loading <span class="auction-text">MIWMOW</span>..</p>
-<!-- C's Auction, miwmow -->
-    
-    <p class="redirect-text">If you are not redirected, <a href="home.html">click here</a></p>
-<!-- home.html, keypad.html -->
+    <div class="loading-spinner"></div>
+    <p id="loading-text">Loading...</p>
 </body>
 </html>
