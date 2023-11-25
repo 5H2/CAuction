@@ -6,7 +6,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/5H2/CAuction">
+  <a href="https://github.com/5H2/miwmow">
     	<img src="https://i.ibb.co/KFtmQdP/37-BE76-BB-353-F-4709-A3-BE-4-BE210-CEA2-A3.png" alt="MIWMOW" height="270" width="800">
   </a>
 
@@ -14,19 +14,17 @@
 <h3 align="center">By 5H2</h3>
 
   <p align="center">
-C's Auction is the premier place for all your buying needs in Hypixel Skyblock. We have competitive prices for every thing in skyblock, including but not limited to; items, armour, pets, talismans, collectibles, coins and more.
-    <br />
-    <br />
-    <a href="https://discord.com/invite/5zqKmmTEDg"><strong>Join The Discord »</strong></a>
+MIWMOW is the #1 place for all your manga needs, read any manga, in order. New chapters every day, constantly updating! Don't see a manga? CONTACT US!
     <br />
     <br />
     <br />
     <br />
-    <a href="https://cauction.xyz/">Visit the site »</a>
+    <br />
+    <br />
+    <a href="https://miwmow.com/">Visit the site »</a>
     ·
-    <a href="https://github.com/5H2/CAuction/issues">Report Bug »</a>
+    <a href="https://github.com/5H2/miwmow/issues">Report Bug »</a>
     ·
-    <a href="https://github.com/5H2/CAuction/issues">Request Feature »</a>
   </p>
 </div>
 
