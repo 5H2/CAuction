@@ -1,0 +1,196 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read AOT</title>
+    <style>
+        body {
+            background-color: #363636;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 0px;
+            color: white;
+            margin-top: 50px;
+        }
+        
+                .searchText {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: white;
+        }
+
+        .layer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #2e2e2e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 250px;
+            border-radius: 8px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin-top: 10px;
+            border: 1px solid #2e2e2e;
+            border-radius: 8px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            display: block;
+        }
+
+        .home-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            color: #878787;
+            cursor: pointer;
+            font-size: 30px;
+            text-decoration: none;
+        }
+
+        #coverImage {
+            width: 80%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        #chapterBtn {
+            background-color: #2e2e2e;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            text-decoration: none;
+        }
+        
+        
+                #chapter0Btn {
+            background-color: #2e2e2e;
+            color: white;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            text-decoration: none;
+        }
+
+        #chapterListContainer {
+            text-align: center;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        #chapterList {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            border: 2px solid #2e2e2e;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 100px;
+        }
+
+        #chapterListTitle {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #chapterList li {
+            width: calc(45%); /* Two links per line with 20px spacing */
+            margin-bottom: 10px; /* Adjusted to 20px */
+            text-align: left;
+        }
+
+        #chapterList a {
+            color: #d9d9d9;
+            text-decoration: none;
+            font-size: 1.2em;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<a href="https://miwmow.com/manga.html" class="home-link">￩</a>
+
+    <div class="container">
+
+        <div class="title">Read Attack on Titan</div>
+
+        <div class="layer">
+            <img id="coverImage" src="https://m.media-amazon.com/images/I/91M9VaZWxOL._AC_UF894,1000_QL80_.jpg" alt="AOT Cover">
+                        <button id="chapter0Btn" onclick="navigateToChapter('chapter-1.html')">Start Chapter 1</button>
+                        
+                        
+                        
+                                <div class="title">Search Chapters</div>
+            <input type="number" id="chapterInput" placeholder="1-150">
+            <button id="chapterBtn" onclick="navigateToChapter()">Go to Chapter</button>
+        </div>
+
+    </div>
+
+    <script>
+        function navigateToChapter(chapterUrl) {
+            if (!chapterUrl) {
+                var chapterNumber = document.getElementById('chapterInput').value;
+                if (chapterNumber) {
+                    chapterUrl = 'chapter-' + chapterNumber + '.html';
+                }
+            }
+            if (chapterUrl) {
+                window.location.href = chapterUrl;
+            }
+        }
+    </script>
+
+</body>
+</html>
