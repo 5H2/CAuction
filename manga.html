@@ -10,12 +10,15 @@
       color: white;
       font-family: Arial, sans-serif;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden; /* Disable horizontal scrolling */
     }
 
     .container {
-      height: 100vh; /* Set the container height to 100% of the viewport height */
-      overflow-y: auto; /* Enable vertical scrolling */
+      padding-bottom: 250px; /* Increased padding at the bottom for more space */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh; /* Ensure the container takes at least the full viewport height */
     }
 
     .title {
@@ -25,8 +28,8 @@
       margin: 20px 0;
       color: white;
     }
-    
-        .info-text {
+
+    .info-text {
       text-align: center;
       font-size: 12px;
       margin-bottom: 10px;
@@ -69,20 +72,16 @@
       font-size: 30px;
       text-decoration: none;
     }
-    
-.small-button {
-  background-color: #2e2e2e;
-  padding: 10px; /* Increased padding for a wider button */
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  margin-top: auto; /* Adjusted margin for better spacing */
-  border-radius: 5px;
-  width: 100%; /* Set a specific width for the button */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+
+    .small-button {
+      background-color: #2e2e2e;
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100vw; /* Set the width to 100% of the viewport width */
+    }
   </style>
 </head>
 <body>
@@ -92,16 +91,13 @@
   <div class="container">
 
     <div class="title">Manga Index</div>
-        <div class="info-text">To request a manga, email miwmowmanga@gmail.com</div>
 
-
-        <div class="layer">
+    <div class="layer">
       <a href="one-piece/one-piece.html">
         <img src="https://m.media-amazon.com/images/I/71y+XnBXm4L._AC_UF1000,1000_QL80_.jpg" alt="One Piece Cover Image">
       </a>
       <button onclick="redirectToChapter('one-piece/one-piece.html')">Read One Piece</button>
     </div>
-    
 
     <div class="layer">
       <a href="nana/nana.html">
@@ -110,7 +106,6 @@
       <button onclick="redirectToChapter('nana/nana.html')">Read Nana</button>
     </div>
 
-
     <div class="layer">
       <a href="csm/chainsaw-man.html">
         <img src="https://m.media-amazon.com/images/I/81s8xJUzWGL._AC_UF1000,1000_QL80_.jpg" alt="CSM Cover Image">
@@ -118,7 +113,7 @@
       <button onclick="redirectToChapter('csm/chainsaw-man.html')">Read Chainsaw Man</button>
     </div>
 
-        <div class="layer">
+    <div class="layer">
       <a href="aot/attack-on-titan.html">
         <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Shingeki_no_Kyojin_manga_volume_1.jpg" alt="AOT Cover Image">
       </a>
@@ -126,8 +121,9 @@
     </div>
 
     <!-- Add more layers as needed -->
-  <button class="small-button" onclick="redirectToChapter('bloons4.html')"></button>
   </div>
+    <div class="info-text">To request a manga, email miwmowmanga@gmail.com</div>
+  <button class="small-button" onclick="redirectToChapter('bloons4.html')"> </button>
 
   <script>
     function redirectToChapter(chapter) {
