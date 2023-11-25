@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> </title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #363636;
+            color: white; /* Set text color to white */
+            font-family: Arial, sans-serif; /* Set a default font */
+        }
+
+        #header {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        #subtitle {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        #captcha-container {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            grid-gap: 10px;
+        }
+
+        .square {
+            width: 80px;
+            height: 80px;
+            background-color: #3498db;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .selected {
+            background-color: #e74c3c;
+        }
+
+        .redirect {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">Suspicious Activity Detected</div>
+    <div id="subtitle">Make all the squares blue to continue...</div>
+    <div id="captcha-container"></div>
+
+    <script>
+        const captchaContainer = document.getElementById("captcha-container");
+        const squares = [];
+
+        // Create 16 squares
+        for (let i = 0; i < 16; i++) {
+            const square = document.createElement("div");
+            square.classList.add("square");
+            square.addEventListener("click", toggleSelection);
+            captchaContainer.appendChild(square);
+            squares.push(square);
+        }
+
+        // Randomly select 3 squares
+        const selectedSquares = getRandomSquares(8);
+        selectedSquares.forEach(index => squares[index].classList.add("selected"));
+
+        // Function to toggle square selection
+        function toggleSelection() {
+            this.classList.toggle("selected");
+
+            // Check if all squares are blue
+            const allBlue = squares.every(square => !square.classList.contains("selected"));
+
+            if (allBlue) {
+                // Redirect to keypad.html
+                window.location.href = 'keypad.html';
+            }
+        }
+
+        // Function to get random square indices
+        function getRandomSquares(num) {
+            const indices = Array.from({ length: squares.length }, (_, index) => index);
+            return shuffle(indices).slice(0, num);
+        }
+
+        // Function to shuffle array
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+    </script>
+</body>
+
+</html>
