@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 31</title>
+     <style>
+        body {
+            background-color: #363636;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Set text color to white */
+            font-family: Arial, sans-serif; /* Set a default font */
+            margin-bottom: 200px; /* Add 200px of empty space at the bottom */
+        }
+
+        h1 {
+            font-size: 2em; /* Set font size for the heading */
+            margin-bottom: 0px; /* Add some space between the heading and images */
+        }
+
+        h2 {
+            margin-top: 10px;
+            font-size: 0.9em; /* Set font size for the content */
+            text-align: center; /* Center-align the text */
+            quotes: "“" "”"; /* Set custom quotes */
+            white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+        }
+
+        img {
+            width: 75%; /* Set a fixed width for the images, adjust as needed */
+            height: auto;
+            margin-bottom: 50px; /* Add some space between the images */
+        }
+
+        #nextBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff87c7;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #previousBtn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #ff87c7;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #mainPageBtn {
+            background-color: #525252;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+        
+        #instructions {
+            color: #6e6e6e;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1em;
+            max-width: 300px; /* Set a maximum width for better readability */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        
+    #disqus_thread {
+        width: 80%;
+        max-width: 800px; /* Adjust the maximum width as needed */
+        margin: 0 auto; /* Center the container */
+    }
+
+    #disqus_thread iframe {
+        width: 80%;
+    }
+
+    @media (max-width: 600px) {
+        #disqus_thread {
+            width: 80%;
+            max-width: 80%;
+        }
+    }
+    </style>
+    <script>
+        function redirectToChapter(chapterUrl) {
+            window.location.href = chapterUrl;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Chapter 31</h1>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihN4xVfWaEdmwAS247s_2DwSZWcn1L9jqI4vnqp6LWWkQlxhqyUQoQdIUtq9mYZzDMtULWJWwRsrpPMLyo6WT_5jniQzMFumE7L_xC9lGqppOk70IPLRBC4AHv7LnmBzGzLcTbgL1CGJSKVZm-njp2dlfnbBzHrLlVhayweXLtdZINsqMr5ohEY7x5/s1600/01.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggroo2U9EG7cp_nZuSfF7gxQ7NdeGiuCzmHE2K_RdQmzld0oOmXOsVoLdYMwnkJ24KkwPaSAhMMjZLdxnPOGoizhhJ8-voFYeeFve5wMXDhqZuDlz3JamTI0RS3jlnHDFNo42rczPl2LtzpEb5ngnUOZhAenowjDamlFzhAmw5kFReCMP6netV-SFG/s1600/02.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuaGYQujpGYVNyUVpWD5gjErpCbgY4hsaMzyydsjyniozYn_KfVG1jful9C-qWPJTYPVAPBwQWoiHqcclQoJQJw0hVfUq0Pe2NbN70CLBl6xLWeCJkYvjMl7QJvdtLOTAGXLgCNE8sFma5vyrs7eFykNaHv163e1sVdFJkVBvfJE0YqrU4J9DeYIFB/s1600/03.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDkcfdch0GkNOptU3ttYN8l_dRHJGwpOthBTVmYkfD8xoT-OyyZykMJkiiFaRbdd_EE07KM9Wo0yITmtWZFdjP5FlnzfysdeI7pg5JN8Jv-z_e3MCsDv9kZuVXgcUZxmpZDpn7BuGVPcZhXJyGkY1DMYGTSResoCGLBuee_vQHonoiT8xUD2X6Cr-d/s1600/04.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmt-ti8XMtkQeZnG9Q9DUBW88XK__jPzTHXpwPzcSek2aad2MJs8s0UMiehpNLzstt4A837OMA9lPxfoEkGRNm-HcAzFQjO-uoPxjVV_JAcUB8d_-uanTT4b62QNBLUz6TRbOPGIsM9liwG5PKkxncNb_SPoGHJawlNdBETMaxcc8x6VHy16_QwsuY/s1600/05.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQ1Cq6MuBwfbzLgis0G1Wtabjm28Gxx2TxUG6LxpTLbTY7Rv7Drlw3L7j4aqYDNGD7vurTdcDwWv9DBSLPoHUhgwTWCNiOfc594keUTh3YqtgGPDi1gpCRESaeiofbRWhYTLDBzkBLNbsB3cJW0Iy3Z6Kgkox7qJKoe-TgaVoiA9e68hQWWlWgm124/s1600/06.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn8VaAy_WeB3ClgV2WCdI6UoiewMUf8VpfSV3Xx59yAH22CH2Z84oRnwv1qSSsQjky-LMiyWuqh_KtJi-0ScfR6A6KZzVk5A6JjmsBy1wXhzdsAD4GrX-hsSgIy5smUXD5TRqV_JFVZOF5cWBZjwqaSahQ4zUGb34Ks_r-_YPB-i7jqJJskdCtxkfH/s1600/07.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFUJGYGRXNeRW7zpCDft_8W0Ncid5dsUixsBgb-41G8KgwJmdywpRI--SiNNCAAkQ9AscUMPEdJtplBOqODFLWHm6_mOP36qNHPkMNUpJvlNeFWWfZBRQIHvSsJWRN8KGmwErPq4HeGIZOOanOXcYF6GeyuzNew4PbU-1vgQH9SZte1TZv6Dhm6faX/s1600/08.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjM2TckAsnnQswzl9Ty7yG0-HdzXxjG0EeMsEDUGdI6tPcjTr_niQ4_4Xt3i84fpgxmLi6SfksHUZcmYumaW7Q_YnO9OiGJkvF0JK2y4eW97LtV2U6-xJz6A6Psv1cWjJUREMIv6CT8lBfrOxSX3ocC8Jj1ig1Kq5Gruorp0O-_anhT5Bofq5S7ala0/s1600/09.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdRYamoXR2HqnN9N8mJZIhxGl_gnqx37_85-W8yK6lhs8rV1V5V2e1LNwD5XXGIkOZ96LDq1WjS9wwNRAg55oJUnsHViw0qr0ZKD7NW72T4y-9C0JybhHPbPWLVqt7cM6lb-0Q1FZ6sKO4Bz_QeqpPLpfSwL7aRli2kSYGYJJgQ_hjCdgOC6a1rdlH/s1600/10.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDGUVBnzh1BKBCDPeKlQgrl7hSL_zgZPBe_QuSuStnIbG2V5SmJZF54gx-H-orC-rtKRuLbjLqu_5OgQDITsnGyZ6xFcNW5zc01OZp1bQHm4NapBuGdb46fdOLI86g8DWeIp_wahqpUnIDhNN8Cr9WqAs2Iw3AjxsouCJ1xWFaK9jVmDPdke1izuUB/s1600/11.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgc04cNrHuTMUpAUz4t_GT1lmIajNEDLwAxsF6yVCkuhbXl_PI_K1bKscERhfvYQaumUuvPA-Q5A6sWtIYNQyhjkxCnQyvYLWdSaue5nIGLf0lollgNLfeRJEapIAIA5zv-YOKvI6VOUZJzWt1ofrNHAt5yB27YugP1Du4_78O0M1sIvToMPSOl06Zl/s1600/12.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjK_eqoHFYqrI_jtihAuTcf9d7xdD9a7c7JQ5QqDZxsiQyU6RTwWR73DOg9VmDtBnnKbu8OTX22fuUXWVPkr41ucA0KDKku8Hd_0FEjKyB7dqIFyEreFYQaeLgbF_WPhXv6P1Om5Xl6sLnNsPCf7dyqEnqunnqHnXIuRcVFfit3AN30e9LhVBb8k5p/s1600/13.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDcYc-Ugu9G2KHLMDQz0wIYC2rZnNqo7uV9WwCM9IIbYY6xqr38pLJ3T8I3tqLiFI0toZ3YvW0ytvDgWiOt-Dt9D4YRd4amyVh_GuhfOWoq8fB_lcO5yWrD0H0Sgt2N75f6KvMKdtscYhWTwobweWl7W3I4FB6h_u41HHdKEYyic5UXgG-ptgJhz0H/s1600/14.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQOzz-wTf1dDH0Lqd8x5Gzx7VRySg5MpVLmyKh1Z8RUVcZEgrmZAUENxvxRCvpCaKIiOK5ON6lflKCkbf4C7Xvdoczk-61A7FxhQ2krAYf4-zYCvzp7ZubYurXmVXqD0XpNnEh8aInLJ7h73ddqSF7wT2l6A4HZSbRd-hyvYBT-pLmzolBLExvrAU6/s1600/15.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIY9u8NcI3y111m3peUl-AOBL1jkxlDHkb4r46j2liygsURLoVTy0FpU8jlC_LLajvPaED05dH4TVoPM3gFbRZ0Vrmv8AYnrByUqM-qatB9nfpUXdAxiXKQhczevPCWZboLn5pOSPTADFqcS-_QJDrM7AZMEWaJntV-aAUJ_jSbEFCe5dTzG19mE55/s1600/16.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaQ_M8E-zOwG3vLGgy3iUq_wBrUDD9bQ-Lhwz0f2nPdjMn7hlrEks6RwYrXx3yjFOOgodsV8WWA94eC6qjnGyp1lMzHHW_M91azWw3rs6f8ktzeuSjH05HFI3S-cVJaNOYuSXCeL1vq2ZXP7zNKcKO-4IqXoH5Fv-4VCxetRIPCoeJ3gbzXJQ-RCgh/s1600/17.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUwr_vOPkONySxRAdCBocZfL5_FLz_EHWGfxbkZHTroud6aUdaGB8jTMY2SNzNgVfD5vVqyAtR9jgN7BhinUHDzxC3KemknQxctulqW012TBRRHNxUxzDGcSN3ra89gB2u1JEXTlbqmNCVMl3qzUDxPwg3Hsfc3wn7WKLseqdlJ1Dhx95xA2XJ6_Hh/s1600/18.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTGeBXHMMj8zLoYh--Mw__F--wdftmHfeWWHzqek97Wb1Tac6-UolB63YdKFKTwaKvlXt5QTGYDFSs_Kykrj6U0ASXSPLkPNzdd2gV0F5Iu7R4O6xJtndHIwNGFvc8UUkw13Si8Uk9ywEWXCKBXq0cxeksXhR7O5V3x2JK9e3ZGx-3UAhIf5Hi5K7B/s1600/19.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihVqmq00oGPfQfYePl1BTUvXIrBtZoRhSm61NTIzysV3RS9mM13GomTZfbkZie2ieWIztlPA2wK0mkpWB9tc5DG4KgCv-h7qylQYmOwcWKBRaJenyxfpxCrBt3p4R-WSmX_7YJqG6NwQUlSooLOUkWgwgD0bC91eeWFb2fI_SW_Tt68O0oBLeTAXFS/s1600/20.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgD7f4fUFoe8hlODKLNT8htyP6IrD1v85EKgP1GAdAVV7S5ClMPM0ZWQsqAk9hgoL5zkO7UygrEi46-8vekpQMFJBVg4fJI5tkfvh9kwq0TP_zoDvKIo30COcjBcYOGVUqIQp0KM0BXF9WrczUNCMjTdVkMCLyyculxqypEiTGFOwccxM644lXilTiM/s1600/21.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEil-cJ0ATuGZGyOi_oCBnTl2uSs36WKAs8qanMVwyzHQemET1CkMEN0-YPp0gNflh42TQGIlsPwW052f2gQYesduMKMwYGTa_VrlbKfYmaKqAycY9zgMly9xSBK2_J4fF77RWfaQ_ZG-eZGg0yyfqTc6wzJcBHSoTktl7x7Xb_n4Pvzc_rLLQsmgf9r/s1600/22.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5L8ipISq2dsJZ6o2tyrcTOVkRmlpj-vdbrbsND48dEZChBPsGX5rzPiYGTNXoRHKqr_yz12W-ZF0sbF8vSyf8WMWghoE7AlgLjhMW6HusKa8XTYRIbHrrTTEVBL2_sox4tHGuHHQzi9qUdzdHOnziSkdesS7Ltu5GxBcJcKCkEzAD_y1jlXdhVDQu/s1600/23.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPUG3uoShUfHaSshQ6OLwAxGlE8nQZQOFlGH5En1DpbkHyIyfyVVo1bS84tI6nxX7NLOgQMjOdzzlfXz922t03Rxuu58tMv9F6GpvCxrojVGQGtHxiFPNjlUOcKPwzRi3bmblFwaN8zNbAKRlHmMdJ1w1xv_XfGhTQwK6UBCVob3UKf3eK6H5Ol8XI/s1600/24.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5sPdbp98R0Q6-KD2fER7VIvrJs6h2vbbb36euEgjhqg-F4q349gk5CQnl63_Tb60OlROe4Z4B4qsp088LdF3T2k9vZp92TLH02nfw-Sk_XKrdvr0SZvj4YtW9lpPtulFW1MdQT2IN49yK4i45IWI_-CmIuXINJCUljzGtkeCjpvZZSKnzQmbDyLgN/s1600/25.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0gKeA2qDLzmYfGevHrmgm73l-gS8S2m0EvQpT8hO5t-HkLmRIyPNfT-IqWU_EwmXfjoJlk7lD4F5vU9EtYDa9tFV-AfuuVUTvLjfqyciilG4UCadAdMF7_1JAeMaDWE3NjG_1yRBuVZ8qrF4BzwYYCOAuqxgmtlTz-a0IETLPCR2FZdQracH8nyga/s1600/26.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlkkT54ZkjRtS5gfvPLtY4Mh6Jh2Oz7h3Xdjn0zkjmlyx6cXwbdlw86aecCRqTvYtpke_iMJAgZRegbjuF3TfBlsOk0OCiuteEYSuMPn2SOYRN9Di3gPYNnhzuU2xE36eFIvbViB_mwOGro15bB_i2RAROFw6G20XnsZ1IsHOEwxYxxbgAO04RZ5Py/s1600/27.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC3_xm3ZV-DKvdA9DiIXwZW8f5t6Vg_371E4_fvPzmqobudPiGY8EAEKZaXlBZFjMlQDfYENd9UpzmQYJJBZfhVuPVE7zlvwOSPNIXpj5t1SS06F51MDuZnKLnm5DRMmtvog7Qlg3a_fUmwkSZTfAiJI8H05VPQ9RYFmS_jh5v97BkKl2NqTZDAiRL/s1600/28.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj78lciRQOr7lvMLdUgcTBuiXWY05_j2Ay5ZMzYXUah0A-hF1Dngj59lLCzV9L1OcvVrVXtUYDiy5-IzB0VTbpR3A8dlQG5Pol90XdTtMjwzTM2SMUL20xn02QiYJ4Pi0JP1ij5j2igqn0VrrUNeQepXYVW2YORz3lT4Dp2ySYcj9HK9xW6BG6Lc8ZD/s1600/29.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgABeOGkGunZijWwhN52uM-8nD-7yC_LWuhMNSaXJtxs-IOnlWc_eLtCd-c5BURVe2bNa-u6Q3wkXOCji4-uUg7FG5kXEAuKVCFVK3VZU5brLlHVjR-XPKdo8kozuTowFhRYr-PVCldUSIw4un7KoED_H34ZdccaxWNIj16-V7RkuJmXK0o7GKzB1bN/s1600/30.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn2C7ZOjk3Vrrg_wUsY2pvNGwafbTh09soJQIpFNvOKgILfSvZ1B-eLgqaX78hT9UHzOlgPZsK2XBnkP5StKP0PS1-IFkwJsbDluCtw6wliGeENyNBLvv8o8f2C4A1pI2p-kQzHf3lBVNQP5urutkbEjAtCS9Tnd2fq352-1MyO_0y37CL7aSNl4jQ/s1600/31.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFZFMW_7rqFi_GdFz1HnQnh1rIx4cwxYz7qswG7Do13S19v55ViMRfKNydgnSIW-h0aUOdpfzVuATLrqnz9tjtnY3HzQfL9UBfsIcCNurcy1VHPnrS4FL_4Eaj0Ttm-kRWHsh_JbqlW4oK3Qpe5F3biaE1I8SQ8BP797QMvE8wkAmYteweF6kJTX_n/s1600/32.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsYe_u7uA6vSUht_g6XJMGIZphBXuhIhpfjIAs79o-EkntBX9aJWhxQ0ZodjpqSWq_q9npELhajul9n_QLSvpC8re21V9OH3V476nIieNSSj4uZV6jg9S2wWxUtud6S4OeR2q6-DIft72lTBW8Od47FsZ_G-k3PtDnufN9eokR5GdsZltLotD3wxCZ/s1600/33.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKd7HofmIOnSunvjuoartUuckkXacUplMwN5sNyCRh5DK7vSE0jpM8071giRW5kIZP89JJeJ0PDu-xx188tv4dwnGIl2wflidw5qgSYju6xEXE-hHrV-P3-KusECbO9yeeEDLiQLlBgAdp69oBt1E5IEEex43BeVDo4yf5BJa7mmxMSkrN8tEEX73J/s1600/34.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1um7sCYO0AKDSsEBbJggSjxgfB2wIbIrBfdOmh1WkBn0NUz44mjVN_9TGMDlguVZGEYQ1V7ZX26TWcX6rSchs-7Deh5C2lrc4hiE4--v2AqTGkfRrOwrJDMc90u7FIZ_eYOcbCbVnvpKXzKC6DlfKtjPeBv4XLVHRqrJUAZH1CdThoigGOGKmd0HB/s1600/35.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqxwFI9nZgShFmhy9HdFAVWVmZkyAExkURRENPjKINkPFWzblzzoKdfkbadpQtpw6TwzY93U12KXYPBN1dTNgYUToXLap_heUh8JI9N5nU6GOwv4p7HqMAjQjkEsH9hK4zsrOkLMrZfcD9iMMYMt9FcZkIOhBZwARlzhJDT9WsDz6ngDb_Qpps3VFs/s1600/36.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSuRdm1SUee_aGU2bTRgnfBQUYM9ecmp7DZOM3oyLLEZa6fMquni0qwttJiqHiVSvy3-ueclB55fQGiHjDWrfUbzitACFCuJqkQJlIZ8Hr50ol-Cv46Tpw-P4zwXT-UQoMayg-U41PXjC5m6-uC3ssWtNZhdMDGdVISzMOgWAQOrO7r-2qObvxYrsd/s1600/37.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSnI31AT7mPCVsRGc2lbT-O9L74EyGxOsP4wkq8K0P1jdZ9hBfojZGxbfm2W9ATNqbp3zf7forRCBRO3zoSKQpU-1hXvvM0b0j7mxbf2lPyJ6kx1FlSpZI0_NriKAQ6XLZw3YF4CHp9gtaNN0ttr9LTnkdOQjgrpYNxPQOpemWCAq_SkwxoPVCvpcV/s1600/38.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXPKKzKGDR59hPM3s0mGMmrAEzBYLZlMdKRommtO8uyPZ4mweKF2LEmPwZAiMBSSJ-L2pn62IlgCbsC0lXyh6PDPfPgdenJck3CyQN3JTwIqh1GJ2Kxf79nwbUCQyuBTB1INwAWb8GLEFNbnraLJ5XrA2Uo2zvBc2lZ1Mek240xJC0426vFOUK9sjT/s1600/39.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDLgRXSQeqtKXs1c7l5VJFsK9ZjfOyLN1ixWrv0aVQtZ__6p2n97ADHhQA1Sdxkt2tAs-zDsm_dDeIelnrODu3GWSka5LH6hFLPBtGgiQjFaqLq1X5BmPq1Cb7hKae8gyMIRLwxOInV18ARJ-O4wGQUl2Veush4AGpDZTevlydl90NHCfzdquZ-GW6/s1600/40.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXIqyCg7TPT8zq1QLfkYgrz1dSvbUvy1oPue7VnEcxA5Y4Bw8w1eUEwG4cn6nJ5n_Y8I4FD4eXs2qfE_OJyBhN4zWbc8fd8SBqMoeFA6AEhtvv06_x9RLaH0Qr3WTbDNDpa8HPSlV3Gw1GzUba9co4qHkcEhl1vTZ3HFS2LD4EDT95AN8mSZVOvuVd/s1600/41.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8x2RSwT5SCS1v10u2qf8IrVS8MWgPBkxdtWFOq47efTHOF1J0YHSNL47YM0zqZyneaqPmVqSxQ1prJR944Z9XJJEjHRlBXWiVPUBZk7V5Y8SPt2q2nGwIXCcMO_X50F_59Ws1JbVkAXQJQlBB2u2Ck4FjBAFcPmCyQgwaWqju_6t--IGHY8s9LS_d/s1600/42.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbvR7UQUIQU4OsG5zRW4dLHOlXXx0paUOhOTZVrVM_sV_KIfAQwRa7QJjPc_-nwoYu_KICsZY6y_qt52i2A1PI1nLOHJ7BtLMTHGCh0wvBO5aJOTFhppoDzuJKYEdpQ8T4gkPHCou3p3x7haK5baRmc64GDla0CEJypEUhT3w_iBe45yaSq7SO9G1u/s1600/43.jpg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEivmIMjB4DuJgeBqPT3JPIbhwCpTpfV-Al7RJa5_l0Ewnilldjo5D8xkYe40GgZWwLbhOz0KFkLZL7JMNnZGVK442UZf-Mx9ofHF7yVdki_VuCwFxdFFaeXkygmW2argGjHAIylMqpaVQF7rEneYHo0weGdXl2Hxwg7Rv-3soIBTEEcCSruzg3qgB6N/s1600/44.jpg">
+
+    <button id="nextBtn" onclick="redirectToChapter('chapter-32.html')">»</button>
+    <button id="mainPageBtn" onclick="redirectToMainPage()">Read more manga</button>
+    <button id="previousBtn" onclick="redirectToChapter('chapter-30.html')">«</button>
+
+    <!-- Disqus comments at the bottom -->
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'PAGE_URL'; // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 'AOT31'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://manga-by7ecprimi.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</body>
+
+</html>
+
