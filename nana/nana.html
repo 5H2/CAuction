@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +25,18 @@
 
         .title {
             text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 0px;
+            color: white;
+            margin-top: 50px;
+        }
+        
+                .searchText {
+            text-align: center;
             font-size: 24px;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 10px 0;
             color: white;
         }
 
@@ -48,6 +59,15 @@
             border-radius: 8px;
         }
 
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin-top: 10px;
+            border: 1px solid #2e2e2e;
+            border-radius: 8px;
+        }
+
         img {
             width: 100%;
             max-width: 400px;
@@ -66,7 +86,7 @@
         }
 
         #coverImage {
-            width: 80%;
+            width: 100%;
             max-width: 400px;
             height: auto;
         }
@@ -74,13 +94,27 @@
         #chapterBtn {
             background-color: #2e2e2e;
             color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            text-decoration: none;
+        }
+        
+        
+                #chapter0Btn {
+            background-color: #2e2e2e;
+            color: white;
             padding: 15px 50px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin-top: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
             text-decoration: none;
         }
 
@@ -120,7 +154,6 @@
             text-decoration: none;
             font-size: 1.2em;
             display: block;
-            
         }
     </style>
 </head>
@@ -130,110 +163,33 @@
 
     <div class="container">
 
-        <div class="title">Read Nana</div>
+        <div class="title">Read NANA</div>
 
         <div class="layer">
-            <img id="coverImage" src="https://m.media-amazon.com/images/I/61kWJEQqr7L._AC_UF1000,1000_QL80_.jpg" alt="Nana Cover Image">
-            <a id="chapterBtn" href="chapter-0.html">Start Chapter 0</a>
-        </div>
+            <img id="coverImage" src="https://m.media-amazon.com/images/I/61kWJEQqr7L._AC_UF1000,1000_QL80_.jpg" alt="NANA Cover" width="100px" height="100px">
 
-        <div id="chapterListContainer">
-            <div id="chapterListTitle">Chapter Select</div>
-            <ul id="chapterList">
-                <li><a href="chapter-1.html">Chapter 1</a></li>
-    <li><a href="chapter-2.html">Chapter 2</a></li>
-    <li><a href="chapter-3.html">Chapter 3</a></li>
-    <li><a href="chapter-4.html">Chapter 4</a></li>
-    <li><a href="chapter-5.html">Chapter 5</a></li>
-    <li><a href="chapter-6.html">Chapter 6</a></li>
-    <li><a href="chapter-7.html">Chapter 7</a></li>
-    <li><a href="chapter-8.html">Chapter 8</a></li>
-    <li><a href="chapter-9.html">Chapter 9</a></li>
-    <li><a href="chapter-10.html">Chapter 10</a></li>
-    <li><a href="chapter-11.html">Chapter 11</a></li>
-    <li><a href="chapter-12.html">Chapter 12</a></li>
-    <li><a href="chapter-13.html">Chapter 13</a></li>
-    <li><a href="chapter-14.html">Chapter 14</a></li>
-    <li><a href="chapter-15.html">Chapter 15</a></li>
-    <li><a href="chapter-16.html">Chapter 16</a></li>
-    <li><a href="chapter-17.html">Chapter 17</a></li>
-    <li><a href="chapter-18.html">Chapter 18</a></li>
-    <li><a href="chapter-19.html">Chapter 19</a></li>
-    <li><a href="chapter-20.html">Chapter 20</a></li>
-    <li><a href="chapter-21.html">Chapter 21</a></li>
-    <li><a href="chapter-22.html">Chapter 22</a></li>
-    <li><a href="chapter-23.html">Chapter 23</a></li>
-    <li><a href="chapter-24.html">Chapter 24</a></li>
-    <li><a href="chapter-25.html">Chapter 25</a></li>
-    <li><a href="chapter-26.html">Chapter 26</a></li>
-    <li><a href="chapter-27.html">Chapter 27</a></li>
-    <li><a href="chapter-28.html">Chapter 28</a></li>
-    <li><a href="chapter-29.html">Chapter 29</a></li>
-    <li><a href="chapter-30.html">Chapter 30</a></li>
-    <li><a href="chapter-31.html">Chapter 31</a></li>
-    <li><a href="chapter-32.html">Chapter 32</a></li>
-    <li><a href="chapter-33.html">Chapter 33</a></li>
-    <li><a href="chapter-34.html">Chapter 34</a></li>
-    <li><a href="chapter-35.html">Chapter 35</a></li>
-    <li><a href="chapter-36.html">Chapter 36</a></li>
-    <li><a href="chapter-37.html">Chapter 37</a></li>
-    <li><a href="chapter-38.html">Chapter 38</a></li>
-    <li><a href="chapter-39.html">Chapter 39</a></li>
-    <li><a href="chapter-40.html">Chapter 40</a></li>
-    <li><a href="chapter-41.html">Chapter 41</a></li>
-    <li><a href="chapter-42.html">Chapter 42</a></li>
-    <li><a href="chapter-43.html">Chapter 43</a></li>
-    <li><a href="chapter-44.html">Chapter 44</a></li>
-    <li><a href="chapter-45.html">Chapter 45</a></li>
-    <li><a href="chapter-46.html">Chapter 46</a></li>
-    <li><a href="chapter-47.html">Chapter 47</a></li>
-    <li><a href="chapter-48.html">Chapter 48</a></li>
-    <li><a href="chapter-49.html">Chapter 49</a></li>
-    <li><a href="chapter-50.html">Chapter 50</a></li>
-    <li><a href="chapter-51.html">Chapter 51</a></li>
-    <li><a href="chapter-52.html">Chapter 52</a></li>
-    <li><a href="chapter-53.html">Chapter 53</a></li>
-    <li><a href="chapter-54.html">Chapter 54</a></li>
-    <li><a href="chapter-55.html">Chapter 55</a></li>
-    <li><a href="chapter-56.html">Chapter 56</a></li>
-    <li><a href="chapter-57.html">Chapter 57</a></li>
-    <li><a href="chapter-58.html">Chapter 58</a></li>
-    <li><a href="chapter-59.html">Chapter 59</a></li>
-    <li><a href="chapter-60.html">Chapter 60</a></li>
-    <li><a href="chapter-61.html">Chapter 61</a></li>
-    <li><a href="chapter-62.html">Chapter 62</a></li>
-    <li><a href="chapter-63.html">Chapter 63</a></li>
-    <li><a href="chapter-64.html">Chapter 64</a></li>
-    <li><a href="chapter-65.html">Chapter 65</a></li>
-    <li><a href="chapter-66.html">Chapter 66</a></li>
-    <li><a href="chapter-67.html">Chapter 67</a></li>
-    <li><a href="chapter-68.html">Chapter 68</a></li>
-    <li><a href="chapter-69.html">Chapter 69</a></li>
-    <li><a href="chapter-70.html">Chapter 70</a></li>
-    <li><a href="chapter-71.html">Chapter 71</a></li>
-    <li><a href="chapter-72.html">Chapter 72</a></li>
-    <li><a href="chapter-73.html">Chapter 73</a></li>
-    <li><a href="chapter-74.html">Chapter 74</a></li>
-    <li><a href="chapter-75.html">Chapter 75</a></li>
-    <li><a href="chapter-76.html">Chapter 76</a></li>
-    <li><a href="chapter-77.html">Chapter 77</a></li>
-    <li><a href="chapter-78.html">Chapter 78</a></li>
-    <li><a href="chapter-78-5.html">Chapter 78.5</a></li>
-    <li><a href="chapter-79.html">Chapter 79</a></li>
-    <li><a href="chapter-80.html">Chapter 80</a></li>
-    <li><a href="chapter-81.html">Chapter 81</a></li>
-    <li><a href="chapter-82.html">Chapter 82</a></li>
-    <li><a href="chapter-83.html">Chapter 83</a></li>
-    <li><a href="chapter-84.html">Chapter 84</a></li>
-    <li><a href="chapter-85.html">Chapter 85</a></li>
-            </ul>
+                        <button id="chapter0Btn" onclick="navigateToChapter('chapter-1.html')">Start Chapter 1</button>
+                        
+                        
+                        
+                                <div class="title">Search Chapters</div>
+            <input type="number" id="chapterInput" placeholder="1-85">
+            <button id="chapterBtn" onclick="navigateToChapter()">Go to Chapter</button>
         </div>
 
     </div>
 
     <script>
-        function redirectToChapter(chapter) {
-            window.location.href = chapter;
+        function navigateToChapter(chapterUrl) {
+            if (!chapterUrl) {
+                var chapterNumber = document.getElementById('chapterInput').value;
+                if (chapterNumber) {
+                    chapterUrl = 'chapter-' + chapterNumber + '.html';
+                }
+            }
+            if (chapterUrl) {
+                window.location.href = chapterUrl;
+            }
         }
     </script>
 
