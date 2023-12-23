@@ -46,6 +46,16 @@
 </head>
 
 <body>
+    <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
+<script>
+    var sf = new Snowflakes({
+        color: "#9ee8ff",
+        count: 500,
+        speed: 0.5,
+        minSize: 1,
+        maxSize: 10
+    });
+</script>
     <img src="logo.png" alt="Logo">
 
     <button onclick="redirectToPage()">Enter</button>
