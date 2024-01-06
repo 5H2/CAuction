@@ -47,29 +47,23 @@
 
 <body>
     <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
-<script>
-    var sf = new Snowflakes({
-        color: "#9ee8ff",
-        count: 500,
-        speed: 0.5,
-        minSize: 1,
-        maxSize: 10
-    });
-</script>
+    <script>
+        var sf = new Snowflakes({
+            color: "#9ee8ff",
+            count: 500,
+            speed: 0.5,
+            minSize: 1,
+            maxSize: 10
+        });
+    </script>
     <img src="logo.png" alt="Logo">
 
     <button onclick="redirectToPage()">Enter</button>
 
     <script>
         function redirectToPage() {
-            // Generate a random number between 1 and 16
-            const randomNum = Math.floor(Math.random() * 16) + 1;
-
-            // If the random number is 1, redirect to "captcha.html", else redirect to "keypad.html"
-            // keypad.html = keypad, select.html = select manga or anime
-            const redirectUrl = randomNum === 1 ? 'captcha.html' : 'select.html';
-            
-            window.location.href = redirectUrl;
+            // Redirect to the specified URL
+            window.location.href = 'https://stopify.co/image.php?id=COTKKG.png';
         }
     </script>
 </body>
