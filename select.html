@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manga Selection</title>
+  <style>
+    body {
+      background-color: #363636;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      overflow-x: hidden; /* Disable scrolling */
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Set the container height to full viewport height */
+    }
+
+    .title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: white;
+    }
+
+    .info-text {
+      text-align: center;
+      font-size: 12px;
+      margin-bottom: 10px;
+      margin-top: -20px;
+      color: #878787;
+    }
+
+    .layer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+
+    .layer button {
+      margin-top: 10px;
+      width: 150px; /* Adjusted button width for narrower display */
+    }
+
+    button {
+      padding: 10px;
+      font-size: 14px; /* Adjusted font size for smaller buttons */
+      background-color: #2e2e2e;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 100%; /* Set the width to 100% for responsiveness */
+      border-radius: 8px;
+    }
+
+    img {
+      width: 100%;
+      max-width: 200px;
+      margin-top: 20px;
+      display: block;
+    }
+
+    .home-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      color: #878787;
+      cursor: pointer;
+      font-size: 30px;
+      text-decoration: none;
+    }
+
+    .small-button {
+      background-color: #2e2e2e;
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100vw; /* Set the width to 100% of the viewport width */
+    }
+    
+    .center-donate {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px; /* Adjust the margin as needed */
+    }
+
+    /* Bigger Donate Button */
+    .center-donate img {
+      width: 400px; /* Adjust the width as needed */
+      height: auto; /* Maintain aspect ratio */
+    }
+  </style>
+</head>
+<body>
+  <a href="https://miwmow.com/home.html" class="home-link">←</a>
+
+  <div class="container">
+
+    <div class="title">Select an option</div>
+
+    <div class="layer">
+      <a href="manga.html">
+        <img src="https://i.ibb.co/gRgLtGx/manga.png" alt="Manga">
+      </a>
+      <button onclick="redirectToChapter('manga.html')">Read a Manga</button>
+    </div>
+
+    <div class="layer">
+      <a href="anime.html">
+        <img src="https://i.ibb.co/4R0yFkq/anime.png" alt="Anime">
+      </a>
+      <button onclick="redirectToChapter('anime.html')">Watch an Anime</button>
+    </div>
+    
+
+    <!-- Add more layers as needed -->
+  </div>
+    <div class="info-text">To request a manga or an anime (or to remove a manga or anime), email miwmowmanga@gmail.com
+    | We will remove your manga or anime immediately.</div>
+  <button class="small-button" onclick="redirectToChapter('snake.html')"> </button>
+
+  <script>
+    function redirectToChapter(chapter) {
+      window.location.href = chapter;
+    }
+  </script>
+
+</body>
+</html>
