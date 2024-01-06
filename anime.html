@@ -1,32 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Title</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #282828;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden; /* Hide overflow to prevent scrollbars */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Selection</title>
+  <style>
+    body {
+      background-color: #363636;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      overflow-x: hidden; /* Disable horizontal scrolling */
+    }
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Maintain aspect ratio while covering the entire container */
-        }
-    </style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+    }
+
+    .title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0 0; /* Adjusted margin to remove the large gap at the top */
+      color: white;
+    }
+
+    .info-text {
+      text-align: center;
+      font-size: 12px;
+      margin-bottom: 10px;
+      margin-top: -20px;
+      color: #878787;
+    }
+
+    .layer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #2e2e2e;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 250px; /* Set the width to 100% to match the image width */
+      border-radius: 8px;
+    }
+
+    img {
+      width: 100%;
+      max-width: 200px;
+      margin-top: 20px;
+      display: block;
+    }
+
+    .home-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      color: #878787;
+      cursor: pointer;
+      font-size: 30px;
+      text-decoration: none;
+    }
+
+    .small-button {
+      background-color: #2e2e2e;
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100vw; /* Set the width to 100% of the viewport width */
+    }
+    
+    .center-donate {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px; /* Adjust the margin as needed */
+    }
+
+    /* Bigger Donate Button */
+    .center-donate img {
+      width: 400px; /* Adjust the width as needed */
+      height: auto; /* Maintain aspect ratio */
+    }
+  </style>
 </head>
-
 <body>
-    <img src="ctape.png" alt="Your Image">
-</body>
+  <a href="https://miwmow.com/select.html" class="home-link">←</a>
 
+  <div class="container">
+
+    <div class="title">Anime Index</div>
+
+    <div class="layer">
+      <a href="anime/aot/attack-on-titan.html">
+        <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Shingeki_no_Kyojin_manga_volume_1.jpg" alt="AOT Cover Image">
+      </a>
+      <button onclick="redirectToChapter('aot/attack-on-titan.html')">Watch Attack on Titan</button>
+    </div>
+    
+
+    <!-- Add more layers as needed -->
+  </div>
+    <div class="info-text">To request an anime (or to remove an anime), email miwmowmanga@gmail.com
+    | We will remove your anime immediately.</div>
+  <button class="small-button" onclick="redirectToChapter('snake.html')"> </button>
+
+  <script>
+    function redirectToChapter(chapter) {
+      window.location.href = chapter;
+    }
+  </script>
+
+</body>
 </html>
