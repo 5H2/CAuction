@@ -1,168 +1,283 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SNAKE</title>
-  <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
-
-  body {
-    background: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  canvas {
-    border: 1px solid white;
-  }
-  </style>
+    <title>Shopping Spree Game</title>
 </head>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+        .balance {
+            position: sticky;
+            top: 0;
+            background-color: #f4f4f4;
+            padding: 10px;
+            z-index: 1000;
+        }
+
+#items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.item img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.item-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+        .item-price {
+            font-size: 14px;
+            color: #73d865; /* Price color set to green */
+        }
+
+.item-quantity {
+    margin-top: 5px;
+}
+
+.item-quantity input {
+    width: 50px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.item-quantity button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#orderButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ddd;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    z-index: 2;
+    width: 300px;
+}
+
+.modal.active {
+    display: block;
+}
+
+.close-modal {
+    cursor: pointer;
+    color: #888;
+    float: right;
+    font-size: 20px;
+}
+    </style>
 <body>
-<canvas width="400" height="400" id="game"></canvas>
-<script>
-var canvas = document.getElementById('game');
-var context = canvas.getContext('2d');
+    <div class="balance">Balance: $<span id="balance">251,300,000,000</span></div>
+    <div id="items">
+        <!-- Items will be added here -->
+    </div>
+    <button id="orderButton">Order</button>
 
-var grid = 16;
-var count = 0;
-  
-var snake = {
-  x: 160,
-  y: 160,
-  
-  // snake velocity. moves one grid length every frame in either the x or y direction
-  dx: grid,
-  dy: 0,
-  
-  // keep track of all grids the snake body occupies
-  cells: [],
-  
-  // length of the snake. grows when eating an apple
-  maxCells: 4
-};
-var apple = {
-  x: 320,
-  y: 320
-};
+    <!-- Modal for displaying the order summary -->
+    <div id="orderModal" class="modal">
+        <span class="close-modal" onclick="document.getElementById('orderModal').classList.remove('active')">&times;</span>
+        <h2>Order Summary</h2>
+        <div id="orderSummary"></div>
+    </div>
 
-// get random whole numbers in a specific range
-// @see https://stackoverflow.com/a/1527820/2124254
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+    <script>
+        let balance = 251300000000;
+        let totalSpent = 0;
+        const itemsPurchased = {};
 
-// game loop
-function loop() {
-  requestAnimationFrame(loop);
+        const balanceElement = document.getElementById('balance');
+        const itemsContainer = document.getElementById('items');
+        const orderModal = document.getElementById('orderModal');
+        const orderSummary = document.getElementById('orderSummary');
 
-  // slow game loop to 15 fps instead of 60 (60/15 = 4)
-  if (++count < 4) {
-    return;
-  }
+        function formatNumber(num) {
+            return num.toLocaleString();
+        }
 
-  count = 0;
-  context.clearRect(0,0,canvas.width,canvas.height);
+        balanceElement.textContent = formatNumber(balance);
+        const items = [
+            { title: "Sheet of Paper", price: 0.01, imgSrc: "https://static.vecteezy.com/system/resources/previews/013/089/850/original/a4-paper-with-shadow-png.png" },
+            { title: "Pencil", price: 0.5, imgSrc: "https://i.pinimg.com/originals/88/5c/68/885c6898a24ce99537b853a99182be2e.png" },
+            { title: "Burger", price: 1, imgSrc: "https://i.pinimg.com/originals/98/7c/79/987c799e3186217aa0a8e6f996a452a0.png" },
+            { title: "Big Mac", price: 2, imgSrc: "https://assets.stickpng.com/images/5882482de81acb96424ffaac.png" },
+            { title: "Houseplant", price: 5, imgSrc: "https://images.homedepot.ca/productimages/p_1001585731.jpg?product-images=l" },
+            { title: "Book", price: 12, imgSrc: "https://images.platoyo.com/v7/_letzshop_production_img_/a79411eff2055fe758e314ebab516c5e.jpeg?q=75&width=1500&height=1500&func=bound&org_if_sml=1&force_format=webp%2Cjpeg" },
+            { title: "Pizza", price: 20, imgSrc: "https://static.vecteezy.com/system/resources/thumbnails/025/076/438/small/pizza-isolated-illustration-ai-generative-png.png" },
+            { title: "Cigarettes", price: 28, imgSrc: "https://atlas-content-cdn.pixelsquid.com/stock-images/closed-cigarettes-pack-marlboro-of-o0zxnX0-600.jpg" },
+            { title: "Steak Dinner", price: 40, imgSrc: "https://media.istockphoto.com/id/91519864/photo/steak-with-baked-potato.jpg?s=612x612&w=0&k=20&c=a0x5He6z3nJQ_FrbNIwjohJGmBPFjJ5tE0fc_vu1Hzg=" },
+            { title: "1g of gold", price: 70, imgSrc: "https://xau.ca/wp-content/uploads/2018/11/1g-Credit-Suisse-Gold-Bar-01.png" },
+           { title: "Amazon Echo Dot", price: 130, imgSrc: "https://m.media-amazon.com/images/I/51K4EqO12ML._AC_SY580_.jpg" },
+           { title: "1 Year of Premium Netflix", price: 252, imgSrc: "https://static.vecteezy.com/system/resources/previews/020/335/987/non_2x/netflix-logo-netflix-icon-free-free-vector.jpg" },
+           { title: "2nd. Gen Airpods Pro", price: 329, imgSrc: "https://i5.walmartimages.ca/images/Enlarge/126/773/6000207126773.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" },
+           { title: "Game Console", price: 650, imgSrc: "https://emulation.gametechwiki.com/images/thumb/6/64/Ps5.png/900px-Ps5.png" },
+           { title: "Kei Truck", price: 800, imgSrc: "https://kei-truck-garage.myshopify.com/cdn/shop/collections/Honda_Acty_HA8_9_1500x.png?v=1677501148" },
+           { title: "Kitten", price: 1500, imgSrc: "https://i.pinimg.com/originals/0c/27/2b/0c272bc26c77c72e88f2502248645b40.png" },
+           { title: "Puppy", price: 1500, imgSrc: "https://purepng.com/public/uploads/large/215023215238kskprmm636ezroj5dmtje7rprnva9ahtvkivciofvniwobydtedjmktzkgjjghev6qaawyjj2iqieowfn79qxvlpbm0hbhfglvl.png" },
+           { title: "Hot air balloon ride", price: 2000, imgSrc: "https://i.pinimg.com/originals/9a/b9/5f/9ab95fb7346c037d103b5e4160ce2f16.png" },
+           { title: "iPhone 15 Pro Max", price: 2500, imgSrc: "https://www.cellularsales.com/wp-content/uploads/2023/09/iPhone15_Pro_Titanium.png" },
+            { title: "Designer Handbag", price: 3250, imgSrc: "https://www.enigma-boutique.com/wp-content/uploads/2020/07/63168596IWB8745-a.png" },
+            { title: "Acre of land", price: 4000, imgSrc: "https://www.investopedia.com/thmb/hdtiMC_XuDzJO4ez-4DrfgrP7yE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/getty-large-farm-landscape-56c0a6aa5f9b5829f867287c.jpg" },
+            { title: "Luxury Watch", price: 6400, imgSrc: "https://ijl.ca/cdn/shop/products/m126000-0006_collection_upright_portrait_70afc31f-6a95-4374-8e69-1bbbdd9743fc.jpg?v=1680027934&width=2048" },
+            { title: "African Safari", price: 7000, imgSrc: "https://www.zicasso.com/static/71806c3bd0cdfb731fdb39075fa86f8c/304cc/71806c3bd0cdfb731fdb39075fa86f8c.jpg" },
+            { title: "Diamond Ring", price: 10000, imgSrc: "https://png.pngtree.com/png-clipart/20230414/original/pngtree-big-diamond-ring-jewelry-png-image_9057103.png" },
+            { title: "Waterski", price: 10200, imgSrc: "https://www.deramar.com/wp-content/uploads/2023/01/VX-C-.jpg" },
+            { title: "Luxury Jewelery", price: 15000, imgSrc: "https://img.freepik.com/free-photo/beautiful-luxury-necklace-jewelry-stand-neck_1339-7945.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703894400&semt=ais" },
+            { title: "Car", price: 30000, imgSrc: "https://vehicle-images.dealerinspire.com/e206-11002297/thumbnails/large/2HGFE1F90RH313776/b9e9b8072dc54490d198c4721db8ad13.png" },
+            { title: "Tesla Model 3", price: 50000, imgSrc: "https://www.stardustev.com.au/wp-content/uploads/2017/11/model3square-533x533.png" },
+            { title: "Golden Fidget Spinner", price: 50000, imgSrc: "https://thejewelerblog.files.wordpress.com/2017/07/fidget1.jpg" },
+            { title: "1Kg of gold", price: 70000, imgSrc: "https://neal.fun/spend/images/gold-bar.jpg" },
+            { title: "Robot Dog", price: 75000, imgSrc: "https://www.sensortips.com/wp-content/uploads/2021/10/spot-explorer-web-2-e1633644852241.png" },
+        
+            { title: "Golden Bath Tub", price: 100000, imgSrc: "https://img.freepik.com/premium-photo/gold-bath-golden-legs-vintage-style-isolated-background-3d-rendering_531308-678.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699488000&semt=ais" },
+            
+            { title: "Monster Truck", price: 150000, imgSrc: "https://i.ibb.co/b7GRypL/DALL-E-2024-01-06-23-47-11-Create-a-photorealistic-image-of-a-smaller-sized-monster-truck-centered-o.png" },
+            
+            { title: "Ferrari", price: 230000, imgSrc: "https://freepngimg.com/thumb/ferrari/13-2-ferrari-png-picture-thumb.png" },
+            { title: "Jetpack", price: 300000, imgSrc: "https://i.ibb.co/hgBQb3C/Jetpack-Item-Fortnite.png" },
+            { title: "Single Family House", price: 350000, imgSrc: "https://media.gettyimages.com/id/171379069/photo/house.jpg?s=612x612&w=0&k=20&c=8H3moJ-taPvxpWu95gY2L6NpnvrMikil_56DJcOwfck=" },
+            { title: "Faberge Egg", price: 1000000, imgSrc: "https://i.ebayimg.com/images/g/9iUAAOSwn6FgM~qC/s-l1200.webp" },
+            { title: "Personal McDonalds", price: 1500000, imgSrc: "https://images.tagesschau.de/image/9f479306-42cb-412f-86d9-bfa8caa0f009/AAABh0Yy0lk/AAABibBxyuw/1x1-256/mcdonald-103.jpg" },
+           
+            { title: "30s Superbowl Ad", price: 7000000, imgSrc: "https://sportank.com/assets/images/feature-image-1.png" },
+            { title: "Golden Toilet", price: 8000000, imgSrc: "https://i.pinimg.com/originals/9d/b2/cf/9db2cff3f160c17737f66a5481250a61.png" },
+            
+            
+            { title: "Tank", price: 9000000, imgSrc: "https://www.rcpro.ca/cdn/shop/files/rcprotanksUSM1A2Abrams3918-pro.png?v=1695563717" },
+            
+            { title: "Penthouse", price: 10000000, imgSrc: "https://www.realestate.com.au/news-image/w_1024,h_768/v1657193536/news-lifestyle-content-assets/wp-content/production/capi_e1f2054480fb4916c71fc92cd2f68140_581286a250752354103927246664564c.jpeg?_i=AA" },
+            
+            { title: "Formula 1 Car", price: 15000000, imgSrc: "https://i.pinimg.com/originals/ae/d6/b5/aed6b55143050c6762ed415f1cde83c5.png" },
+            
+            { title: "Apache Helicopter", price: 35000000, imgSrc: "https://neal.fun/spend/images/apache-helicopter.jpg" },
+            
+            
+            { title: "Mansion", price: 50000000, imgSrc: "https://cdn.openart.ai/published/Iqnch2oTgeucZ9LObty7/RxvXvChy_VUX6_256.webp" },
+            
+            { title: "DaVinci's Notebook", price: 61000000, imgSrc: "https://www.p3comix.at/wp-content/uploads/2023/10/codex.png" },
+            
+            { title: "Bell Boeing V-22 Osprey", price: 68000000, imgSrc: "https://atlas-content-cdn.pixelsquid.com/assets_v2/150/1506817838189385186/jpeg-600/G03.jpg?modifiedAt=1" },
+            
+            { title: "Boeing 747-8i", price: 418000000, imgSrc: "https://atlas-content-cdn.pixelsquid.com/stock-images/boeing-747-8i-airliner-doWzAxF-600.jpg" },
+            { title: "DaVinci Painting", price: 4500000000, imgSrc: "https://cdn.sanity.io/images/cxgd3urn/production/73ce32d38fdc5341517e586c00e10e6ce9e5a426-734x960.jpg?w=1200&h=1569&fit=crop&auto=format" },
+            
+            { title: 'Superyacht', price: 600000000, imgSrc: "https://yachtharbour.com/static/images/n/large_4048_ac7b7.jpeg" },
+            
+            { title: "Mona Lisa", price: 860000000, imgSrc: "https://i.pngimg.me/thumb/f/720/comdlpng6937990.jpg" },
+            
+            { title: "1g of Francium ", price: 1000000000, imgSrc: "https://sciencenotes.org/wp-content/uploads/2020/10/Uraninite.jpg" },
+            
+            { title: "B2 Bomber", price: 1000000000, imgSrc: "https://qph.cf2.quoracdn.net/main-qimg-776502009e7b0da969038989e9377139.webp" },
+            
+            { title: "Personal Nuclear Submarine", price: 2000000000, imgSrc: "https://atlas-content-cdn.pixelsquid.com/stock-images/hms-artful-ssns-submarine-Od6rKy5-600.jpg" },
+            
+            { title: "NBA Team", price: 2200000000, imgSrc: "https://neal.fun/spend/images/nba-team.jpg" },
+            
+            { title: "Personal Rocket Ship", price: 7000000000, imgSrc: "https://i.pinimg.com/564x/6b/b8/0a/6bb80a1588ed2d7d06ffc42e941d710c.jpg" },
+            
+            { title: "Nuclear Bomb", price: 10000000000, imgSrc: "https://atlas-content-cdn.pixelsquid.com/stock-images/cartoon-nuke-bomb-on-ground-nuclear-vn7Ak21-600.jpg" },
+            
+            { title: "Twitter", price: 44000000000, imgSrc: "https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_twitter-512.png" },
+            
+            { title: "1g of Antimatter", price: 1000000000000000, imgSrc: "https://www.spaceanswers.com/wp-content/uploads/2014/09/Screen-Shot-2014-09-08-at-10.12.24.png" },
+            
+            { title: "‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎ ‎ Time‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ", price: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999, imgSrc: "https://static.vecteezy.com/system/resources/previews/019/873/851/original/clock-icon-transparent-free-icon-free-png.png" },
+            
+            
+        ];
 
-  // move snake by it's velocity
-  snake.x += snake.dx;
-  snake.y += snake.dy;
 
-  // wrap snake position horizontally on edge of screen
-  if (snake.x < 0) {
-    snake.x = canvas.width - grid;
-  }
-  else if (snake.x >= canvas.width) {
-    snake.x = 0;
-  }
-  
-  // wrap snake position vertically on edge of screen
-  if (snake.y < 0) {
-    snake.y = canvas.height - grid;
-  }
-  else if (snake.y >= canvas.height) {
-    snake.y = 0;
-  }
+        items.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'item';
+            itemElement.innerHTML = `
+                <img src="${item.imgSrc}" alt="${item.title}">
+                <div class="item-title">${item.title}</div>
+                <div class="item-price">$${item.price}</div>
+                <div class="item-quantity">
+                    <button onclick="updateItemQuantity('${item.title}', ${item.price}, -1)">-</button>
+                    <input type="number" id="qty-${item.title}" min="0" value="0" readonly>
+                    <button onclick="updateItemQuantity('${item.title}', ${item.price}, 1)">+</button>
+                </div>
+            `;
+            itemsContainer.appendChild(itemElement);
+        });
 
-  // keep track of where snake has been. front of the array is always the head
-  snake.cells.unshift({x: snake.x, y: snake.y});
+        function updateItemQuantity(title, price, change) {
+            const quantityInput = document.getElementById(`qty-${title}`);
+            let quantity = parseInt(quantityInput.value) + change;
 
-  // remove cells as we move away from them
-  if (snake.cells.length > snake.maxCells) {
-    snake.cells.pop();
-  }
+            if (quantity < 0) quantity = 0;
 
-  // draw apple
-  context.fillStyle = 'red';
-  context.fillRect(apple.x, apple.y, grid-1, grid-1);
+            const costChange = price * change;
+            if (balance - costChange >= 0 || change < 0) {
+                balance -= costChange;
+                totalSpent += Math.max(costChange, 0);
+                itemsPurchased[title] = (itemsPurchased[title] || 0) + change;
+                balanceElement.textContent = formatNumber(balance);
+                quantityInput.value = quantity;
+                updateOrderSummary();
+            } else {
+                alert("Insufficient funds!");
+            }
+        }
 
-  // draw snake one cell at a time
-  context.fillStyle = 'green';
-  snake.cells.forEach(function(cell, index) {
-    
-    // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
-    context.fillRect(cell.x, cell.y, grid-1, grid-1);  
+        document.getElementById('orderButton').addEventListener('click', () => {
+            updateOrderSummary();
+            orderModal.classList.add('active');
+        });
 
-    // snake ate apple
-    if (cell.x === apple.x && cell.y === apple.y) {
-      snake.maxCells++;
-
-      // canvas is 400x400 which is 25x25 grids 
-      apple.x = getRandomInt(0, 25) * grid;
-      apple.y = getRandomInt(0, 25) * grid;
-    }
-
-    // check collision with all cells after this one (modified bubble sort)
-    for (var i = index + 1; i < snake.cells.length; i++) {
-      
-      // snake occupies same space as a body part. reset game
-      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        snake.x = 160;
-        snake.y = 160;
-        snake.cells = [];
-        snake.maxCells = 4;
-        snake.dx = grid;
-        snake.dy = 0;
-
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
-      }
-    }
-  });
-}
-
-// listen to keyboard events to move the snake
-document.addEventListener('keydown', function(e) {
-  // prevent snake from backtracking on itself by checking that it's 
-  // not already moving on the same axis (pressing left while moving
-  // left won't do anything, and pressing right while moving left
-  // shouldn't let you collide with your own body)
-  
-  // left arrow key
-  if (e.which === 37 && snake.dx === 0) {
-    snake.dx = -grid;
-    snake.dy = 0;
-  }
-  // up arrow key
-  else if (e.which === 38 && snake.dy === 0) {
-    snake.dy = -grid;
-    snake.dx = 0;
-  }
-  // right arrow key
-  else if (e.which === 39 && snake.dx === 0) {
-    snake.dx = grid;
-    snake.dy = 0;
-  }
-  // down arrow key
-  else if (e.which === 40 && snake.dy === 0) {
-    snake.dy = grid;
-    snake.dx = 0;
-  }
-});
-
-// start the game
-requestAnimationFrame(loop);
-</script>
+        function updateOrderSummary() {
+            let summary = `Congrats you spent $${formatNumber(totalSpent)} out of $${formatNumber(251300000000)}<br><br>You bought:<br>`;
+            for (const [title, quantity] of Object.entries(itemsPurchased)) {
+                if (quantity > 0) {
+                    summary += `- ${quantity}x ${title}<br>`;
+                }
+            }
+            orderSummary.innerHTML = summary;
+        }
+    </script>
 </body>
 </html>
