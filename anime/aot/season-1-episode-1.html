@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TV Show</title>
+  <style>
+    body {
+      background-color: #363636;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      overflow-x: hidden; /* Disable horizontal scrolling */
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    video {
+      width: 80%;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+
+    .episode-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .episode-select {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <video controls>
+      <source src="season-1-episode-1.MP4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="episode-title">Episode 1</div>
+
+    <div class="episode-select">
+      <label for="season-select">Select Season:</label>
+      <select id="season-select" onchange="changeSeason(this)">
+        <option value="season1">Season 1</option>
+        <option value="season2">Season 2</option>
+        <option value="season3">Season 3</option>
+        <option value="season4">Season 4</option>
+      </select>
+
+      <label for="episode-select">Select Episode:</label>
+      <select id="episode-select" onchange="changeEpisode(this)">
+        <!-- Options will be populated dynamically based on the selected season -->
+      </select>
+    </div>
+  </div>
+
+  <script>
+    // Populate episode select options based on the selected season
+    function changeSeason(seasonSelect) {
+      var episodeSelect = document.getElementById("episode-select");
+      episodeSelect.innerHTML = ""; // Clear previous options
+      
+      var season = seasonSelect.value;
+      var numEpisodes;
+
+      if (season === "season1") {
+        numEpisodes = 25;
+      } else if (season === "season2") {
+        numEpisodes = 12;
+      } else if (season === "season3") {
+        numEpisodes = 22;
+      } else if (season === "season4") {
+        numEpisodes = 28;
+      }
+
+      for (var i = 1; i <= numEpisodes; i++) {
+        var option = document.createElement("option");
+        option.text = "Episode " + i;
+        option.value = "season-" + season.substring(6) + "-episode-" + i + ".html";
+        episodeSelect.add(option);
+      }
+    }
+
+    // Redirect to the selected episode page
+    function changeEpisode(episodeSelect) {
+      var selectedEpisode = episodeSelect.value;
+      window.location.href = selectedEpisode;
+    }
+
+    // Initialize episode select options for Season 1
+    changeSeason(document.getElementById("season-select"));
+  </script>
+</body>
+</html>
