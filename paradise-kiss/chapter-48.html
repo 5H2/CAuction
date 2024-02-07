@@ -90,6 +90,15 @@
             text-decoration: none;
         }
     </style>
+    <script>
+        function redirectToChapter(chapterUrl) {
+            window.location.href = chapterUrl;
+        }
+
+        function redirectToMainPage() {
+            window.location.href = 'manga.html';
+        }
+    </script>
 </head>
 <body>
     <h1>Chapter 48</h1>
@@ -123,7 +132,7 @@
 <img src="paradise_kiss_chapter_48_27.jpg" alt="Chapter 48, Page 27">
 <img src="paradise_kiss_chapter_48_28.jpg" alt="Chapter 48, Page 28">
 <img src="paradise_kiss_chapter_48_29.jpg" alt="Chapter 48, Page 29">
-    <button id="nextBtn" onclick="redirectToChapter('chapter-48')">»</button>
+    <button id="nextBtn" onclick="redirectToChapter('bonus')">BONUS CHAPTER</button>
     <button id="mainPageBtn" onclick="redirectToMainPage()">Read more manga</button>
     <button id="previousBtn" onclick="redirectToChapter('chapter-47')">«</button>
 
