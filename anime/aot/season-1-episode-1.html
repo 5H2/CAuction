@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AOT | S01E01</title>
+  <title>TV Show</title>
   <style>
     body {
       background-color: #363636;
@@ -37,16 +37,28 @@
       font-size: 18px;
       margin-bottom: 20px;
     }
+
+    .next-episode-arrow {
+      font-size: 55px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 15px;
+    }
+    
+    .next-episode-arrow:hover {
+ scale: 1.2;
+}
   </style>
 </head>
 <body>
   <div class="container">
     <video controls>
-      <source src="/season-1-episode-1.mp4" type="video/mp4">
+      <source src="season-1-episode-1.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <div class="episode-title">Episode 1</div>
+        <div class="next-episode-arrow" onclick="goToNextEpisode()">➾</div>
 
     <div class="episode-select">
       <label for="season-select">Select Season:</label>
@@ -62,39 +74,68 @@
         <!-- Options will be populated dynamically based on the selected season -->
       </select>
     </div>
+
+    <!-- Next Episode Arrow -->
   </div>
 
   <script>
+    var currentSeason = "season1";
+    var currentEpisodeIndex = 1;
+
     // Populate episode select options based on the selected season
     function changeSeason(seasonSelect) {
       var episodeSelect = document.getElementById("episode-select");
       episodeSelect.innerHTML = ""; // Clear previous options
       
-      var season = seasonSelect.value;
+      currentSeason = seasonSelect.value;
       var numEpisodes;
 
-      if (season === "season1") {
+      if (currentSeason === "season1") {
         numEpisodes = 25;
-      } else if (season === "season2") {
+      } else if (currentSeason === "season2") {
         numEpisodes = 12;
-      } else if (season === "season3") {
+      } else if (currentSeason === "season3") {
         numEpisodes = 22;
-      } else if (season === "season4") {
+      } else if (currentSeason === "season4") {
         numEpisodes = 28;
       }
 
       for (var i = 1; i <= numEpisodes; i++) {
         var option = document.createElement("option");
         option.text = "Episode " + i;
-        option.value = "season-" + season.substring(6) + "-episode-" + i + ".html";
+        option.value = "season-" + currentSeason.substring(6) + "-episode-" + i + ".html";
         episodeSelect.add(option);
       }
+
+      currentEpisodeIndex = 1; // Reset current episode index when changing season
     }
 
     // Redirect to the selected episode page
     function changeEpisode(episodeSelect) {
       var selectedEpisode = episodeSelect.value;
       window.location.href = selectedEpisode;
+    }
+
+    // Go to the next episode
+    function goToNextEpisode() {
+      var episodeSelect = document.getElementById("episode-select");
+      var nextIndex = currentEpisodeIndex + 1;
+
+      if (nextIndex <= episodeSelect.options.length) {
+        var nextEpisode = episodeSelect.options[nextIndex - 1].value;
+        window.location.href = nextEpisode;
+      } else {
+        var nextSeasonSelect = document.getElementById("season-select");
+        var nextSeasonIndex = nextSeasonSelect.selectedIndex + 1;
+        if (nextSeasonIndex < nextSeasonSelect.options.length) {
+          nextSeasonSelect.selectedIndex = nextSeasonIndex;
+          changeSeason(nextSeasonSelect);
+          var nextEpisode = episodeSelect.options[0].value;
+          window.location.href = nextEpisode;
+        }
+      }
+
+      currentEpisodeIndex = nextIndex;
     }
 
     // Initialize episode select options for Season 1
